@@ -23,16 +23,38 @@
         @endif
 
         <div class="card-img">
-            @forelse($unit->attachments as $attachment)
-            @if ($loop->index == 0)
-            <meta itemprop="image" content="{{file_exists(public_path('/storage/dimensionals/uploads/'.$attachment->file_name_without_extension.'_280x300'.'.'.$attachment->extension)) ? asset('storage/dimensionals/uploads/'.$attachment->file_name_without_extension.'_280x300'.'.'.$attachment->extension) : $attachment->url}}" />
-            <img class="unit-img" onerror="this.remove()" src="{{file_exists(public_path('/storage/dimensionals/uploads/'.$attachment->file_name_without_extension.'_280x300'.'.'.$attachment->extension)) ? asset('storage/dimensionals/uploads/'.$attachment->file_name_without_extension.'_280x300'.'.'.$attachment->extension) : $attachment->url}}" alt="{{$attachment->alt}}" itemprop="image">
-            @break
-            @endif
+     @if ($unit->featured_image)
+            <img class="img" src="{{$unit->featured_image}}" alt="{{ $unit->title }}" itemprop="image" />
+
+            @elseif ($unit->images)
+            @forelse($unit->images as $image)
+                    @if ($loop->index == 0)
+                        <iframe src="{{ $image->link }}"  style="width: 100%; height: 100%;" allowfullscreen="allowfullscreen"></iframe>
+                    @break
+                @endif
             @empty
-            <meta itemprop="image" content="{{URL::asset('front/images/placeholder.png')}}" />
-            <img class="unit-img placeholder-img" onerror="this.remove()" src="{{URL::asset('front/images/placeholder.png')}}" alt="{{$unit->title}}" itemprop="image">
+                <meta itemprop="image" content="{{ URL::asset('front/images/placeholder.png') }}" />
+                <img class="unit-img placeholder-img" onerror="this.remove()"
+                    src="{{ URL::asset('front/images/placeholder.png') }}" alt="{{ $unit->title }}"
+                    itemprop="image">
             @endforelse
+        @else
+            @forelse($unit->attachments as $attachment)
+                @if ($loop->index == 0)
+                    <meta itemprop="image"
+                        content="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}" />
+                    <img class="unit-img" onerror="this.remove()"
+                        src="{{ file_exists(public_path('/storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension)) ? asset('storage/dimensionals/uploads/' . $attachment->file_name_without_extension . '_280x300' . '.' . $attachment->extension) : $attachment->url }}"
+                        alt="{{ $attachment->alt }}" itemprop="image">
+                @break
+            @endif
+        @empty
+            <meta itemprop="image" content="{{ URL::asset('front/images/placeholder.png') }}" />
+            <img class="unit-img placeholder-img" onerror="this.remove()"
+                src="{{ URL::asset('front/images/placeholder.png') }}" alt="{{ $unit->title }}"
+                itemprop="image">
+        @endforelse
+    @endif
         </div>
 
         <div class="commercial-tag">

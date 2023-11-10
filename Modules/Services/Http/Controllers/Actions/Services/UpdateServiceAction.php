@@ -46,6 +46,8 @@ class UpdateServiceAction
         $service->update([
             'is_featured' => isset($data['is_featured']) ? $data['is_featured'] : 0,
             'icon' => isset($data['icon']) ? $data['icon'] : $service->icon,
+            'price' => isset($data['price']) ? $data['price'] : $service->price,
+
             'updated_at' => $updated_at,
         ]);
 

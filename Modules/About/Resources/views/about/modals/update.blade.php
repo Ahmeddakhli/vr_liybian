@@ -77,6 +77,14 @@
                                             </div>
                                         @endif
                                     </div>
+                                    <div class="col-6 mt-5">
+                                        <label for="video_url">{{ __('about::about.video_url') }}</label>
+                                        <input name="video_url" id="video_url" type="text"
+                                            value="{{ $about->video_url }}" class="form-control"
+                                            placeholder="{{ __('about::about.video_url') }}"
+                                            data-parsley-maxlength="255"
+                                            data-parsley-maxlength-message="{{ __('about::about.about_max_is_150_characters_long') }}">
+                                    </div>
                                     <div class="repeater col-12">
                                         <div data-repeater-list="translations">
                                             @foreach ($about->translations as $index => $translation)

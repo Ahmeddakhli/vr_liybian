@@ -58,12 +58,14 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="attachments-tab" data-toggle="tab" data-target="#attachments" type="button" role="tab" aria-controls="attachments" aria-selected="false">{{__('inventory::inventory.attachments')}}</button>
                                                 </li>
-                                                <li class="nav-item" role="presentation">
+                                                {{-- <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="financial_information-tab" data-toggle="tab" data-target="#financial_information" type="button" role="tab" aria-controls="financial_information" aria-selected="false">{{__('inventory::inventory.financial_information')}}</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="payment_plans-tab" data-toggle="tab" data-target="#payment_plans" type="button" role="tab" aria-controls="payment_plans" aria-selected="false">{{__('inventory::inventory.payment_plans')}}</button>
-                                                </li>
+                                                </li> --}}
+                                                <div class="evovr-tour-editor" postid="{{ $i_unit->id }}" showGadget="true" buttonColor="blue" showIcon="false" editText="تعديل الجولة" createText="انشاء جولة "></div>
+
                                             </ul>
                                             <div class="tab-content" id="myTabContent">
                                                 <div class="tab-pane fade show active" id="unit_information" role="tabpanel" aria-labelledby="unit_information-tab">
@@ -79,10 +81,9 @@
                                                             <label for="is_active">{{__('inventory::inventory.is_active')}}</label>
                                                         </div>
                                                         <div class="fancy-checkbox col-4">
-                                                            <input name="ready_to_move" id="ready_to_move" type="checkbox" @if($i_unit->ready_to_move == 1)checked @endif>
-                                                            <label for="ready_to_move">{{__('main.ready_to_move')}}</label>
+                                                            <input name="is_payed_to_show" id="ready_to_move" type="checkbox" @if($i_unit->is_payed_to_show == 1)checked @endif>
+                                                            <label for="ready_to_move">{{__('main.is_payed_to_show')}}</label>
                                                         </div>
-                                                        <div class="col-4"></div>
                                                         <!-- Unit Number -->
                                                         <!-- <div class="col-4 my-3">
                                                             <label for="unit_number">{{__('inventory::inventory.unit_number')}}</label>
@@ -103,10 +104,10 @@
                                                             </select>
                                                         </div>
                                                         <!-- Seller -->
-                                                        <div class="col-4 my-3">
-                                                            <label for="seller_id">{{__('inventory::inventory.seller')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input type="text" id="seller_id" name="seller_id" class="form-control" data-parsley-trigger="change focusout" class="form-control" data-role="tagsinput" />
-                                                        </div>
+                                                        <!--<div class="col-4 my-3">-->
+                                                        <!--    <label for="seller_id">{{__('inventory::inventory.seller')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>-->
+                                                        <!--    <input type="text" id="seller_id" name="seller_id" class="form-control" data-parsley-trigger="change focusout" class="form-control" data-role="tagsinput" />-->
+                                                        <!--</div> -->
                                                         <!-- Buyer -->
                                                         <!-- <div class="col-4 my-3">
                                                             <label for="buyer_id">{{__('inventory::inventory.buyer')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
@@ -331,10 +332,10 @@
                                                                     </div>
 
                                                                     <!-- Address -->
-                                                                    <div class="col-4 my-3">
+                                                                    {{-- <div class="col-4 my-3">
                                                                         <label for="address">{{__('inventory::inventory.address')}}</label>
                                                                         <input name="address" id="address" value="{{$translation->address}}" type="text" class="form-control" placeholder="{{__('inventory::inventory.enter_address')}}" data-parsley-trigger="change focusout" data-parsley-maxlength="191" data-parsley-maxlength-message="{{__('inventory::inventory.address_max_is_16777215_characters_long')}}">
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <!-- Title -->
                                                                     <div class="col-6">
                                                                         <label for="title">{{__('inventory::inventory.title')}}</label>
@@ -478,6 +479,29 @@
                                                     <div class="col-8">
                                                         <label for="video">{{__('inventory::inventory.video')}}</label> - <small>{{__('settings::settings.embed')}}</small>
                                                         <textarea name="video" class="form-control" id="video" data-parsley-trigger="change focusout">{{$i_unit->video}}</textarea>
+                                                    </div>
+                                                        <div class="col-3">
+                                                        <div class="form-group imgUp">
+                                                            <label
+                                                                for="featured_image">{{ __('inventory::inventory.featured_image') }}
+                                                            </label>
+                                                            <label class="btn btn-primary">
+
+                                                            <input type="file" name="featured_image"
+                                                            class="uploadFile img" id="featured_image"
+                                                                onchange="readURL(this);"
+                                                                data-parsley-trigger="change focusout" />
+                                                            </label>
+
+                                                            <img src="{{ asset('storage/' . $i_unit->featured_image) }}"
+                                                                class="w-50" alt="">
+
+                                                            <div class="imagePreview"
+                                                                style="background-image: url('{{ asset('storage/' . $i_unit->featured_image) }}')">
+                                                            </div>
+                                                            
+                                                            
+                                                        </div>
                                                     </div>
                                                     <div class="form-group row mt-3">
 
@@ -695,7 +719,7 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="financial_information" role="tabpanel" aria-labelledby="financial_information-tab">
+                                                {{-- <div class="tab-pane fade" id="financial_information" role="tabpanel" aria-labelledby="financial_information-tab">
                                                     <div class="form-group row">
                                                         <!-- Offering Type -->
 
@@ -753,7 +777,7 @@
                                                 </div>
                                                 <div class="tab-pane fade" id="payment_plans" role="tabpanel" aria-labelledby="payment_plans-tab">
                                                     @include('inventory::units.payment-plan-update')
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <div class="row">
                                                 <!-- Left Side -->
@@ -785,6 +809,22 @@
                                         </div>
 
                                         <div class="kt-portlet__foot">
+                                                                    @if ($i_unit->images)
+
+                                            @foreach($i_unit->images as $image)
+                                                @if ($loop->index == 0)
+                                                @php
+                                                    $url = $image->link;
+                                                    $code = Str::afterLast($url, '=');
+                                                    @endphp
+                                                <input type="text" class="form-control m-2" value="{{route('view',$code)}}" readonly>
+
+                                                @break
+                                            @endif
+
+                                        @endforeach
+                                        @endif
+                                            <input type="text" class="form-control m-2" value="{{route('front.singleUnit',['id' => $i_unit->id,'title'=>  str_slug($i_unit->default_title)])}}" readonly>
                                             <div class="kt-form__actions">
                                                 <div class="kt-section kt-section--last">
                                                     <div class="kt-section__body">

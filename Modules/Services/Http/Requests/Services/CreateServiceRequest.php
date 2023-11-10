@@ -42,12 +42,14 @@ class CreateServiceRequest extends FormRequest
 
         $array = array();
         $array['icon'] = "required|string|max:191";
+
+        $array['price'] = "required|string|max:191";
         $array['translations'] = 'required|array';
         $array['translations.*.language_id'] = "required|exists:languages,id";
         $array['translations.*.title'] = "required|string|max:191";
         $array['is_featured'] = ['nullable', Rule::in(['on', 'off'])];
         // Attachments validation
-        
+
         return $array;
     }
 

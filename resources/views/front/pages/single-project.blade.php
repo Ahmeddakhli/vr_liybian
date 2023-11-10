@@ -44,8 +44,8 @@ foreach ($contacts as $key => $contact) {
         content="{{ strip_tags($single_project->meta_description ? $single_project->meta_description : substr($single_project->description, 0, 150)) }}" />
     <!-- Twitter Card data -->
     <meta name='twitter:app:country' content='EG' />
-    <meta name="twitter:site" content="@advisors" />
-    <meta name="twitter:creator" content="@advisors" />
+    <meta name="twitter:site" content="@libyan-cube" />
+    <meta name="twitter:creator" content="@libyan-cube" />
     <meta name="twitter:title"
         content="{{ $single_project->meta_title ? $single_project->meta_title : $single_project->project }}">
     <meta name="twitter:card" content="summary_large_image" />
@@ -714,7 +714,7 @@ array_push($images, $attch->url);
         "mpn": "{{ $single_project->id }}",
         "brand": {
             "@type": "Brand",
-            "name": "{{ $single_project->developer ? $single_project->developer->developer : 'advisors Properties' }}"
+            "name": "{{ $single_project->developer ? $single_project->developer->developer : 'libyan-cube Properties' }}"
         },
         "review": {
             "@type": "Review",
@@ -725,7 +725,7 @@ array_push($images, $attch->url);
             },
             "author": {
                 "@type": "Organization",
-                "name": "advisors Properties"
+                "name": "libyan-cube Properties"
             }
         },
         "aggregateRating": {

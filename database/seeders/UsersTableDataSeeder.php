@@ -36,7 +36,7 @@ class UsersTableDataSeeder extends Seeder
             'full_name' => 'General Manager',
             'image' => 'front/images/logo.png',
             'username' => 'general_manager',
-            'email' => 'general_manager@advisors.com',
+            'email' => 'general_manager@libyan-cube.com',
             'password' => '$2y$10$H2Vof82ZT3GfX/86sDKy0uXImjiEIiM56DEzKEg/W0k/K2pfZrU3e',
             'mobile_number' => '000000000000',
             'created_at' => Carbon::now()

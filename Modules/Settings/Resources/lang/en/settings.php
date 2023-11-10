@@ -224,6 +224,7 @@ return [
     'aside_title_en'=>'Aside title En',
     'aside_title_ar'=>'Aside title Ar',
     'pixel_code'=>'Facebook pixel code',
+    'home_iframe'=>'home iframe',
     'tags_manager'=>'Header tags manager',
     'body_tag_manager'=>'Body Tags manager',
     'enable_ar'=>'Enable Ar',

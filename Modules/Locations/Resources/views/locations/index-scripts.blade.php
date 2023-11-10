@@ -179,16 +179,16 @@
                                 `;
                         @endif
                         @if(auth()->user()->hasPermission('index-locations'))
-                        if (full.parent.parent != null && full.parent.parent.parent != null && full.parent.parent.parent.parent_id == null) {
-                            value += `
-                                    <a href="${location_url}" class="dropdown-item"   data-title="{{trans('locations::location.view_location')}}" >
-                                        <span>
-                                            <i class="la la-edit"></i>
-                                            <span>{{trans('locations::location.view_location')}}</span>
-                                        </span>
-                                    </a>
-                                `;
-                        }
+                        // if (full.parent.parent != null && full.parent.parent.parent != null && full.parent.parent.parent.parent_id == null) {
+                        //     value += `
+                        //             <a href="${location_url}" class="dropdown-item"   data-title="{{trans('locations::location.view_location')}}" >
+                        //                 <span>
+                        //                     <i class="la la-edit"></i>
+                        //                     <span>{{trans('locations::location.view_location')}}</span>
+                        //                 </span>
+                        //             </a>
+                        //         `;
+                        // }
                         // } else if (full.parent.parent != null && full.parent.parent.parent != null && full.parent.parent.parent.parent_id == null) {
                         //     value += `
                         //             <a href="${view_url}" class="dropdown-item"   data-title="{{trans('locations::location.view_location')}}"  data-modal-load>

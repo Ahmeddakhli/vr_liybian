@@ -60,6 +60,12 @@
                     data: 'value',
                     orderable: true,
                     searchable: true
+                }
+                ,
+                {
+                    data: 'price',
+                    orderable: true,
+                    searchable: true
                 },
                 {
                     data: 'created_at',
@@ -88,20 +94,27 @@
                 },
                 {
                     targets: 2,
+                    title: "{{trans('services::services.price')}}",
+                    render: function(data, type, full, meta) {
+                        return full.price;
+                    },
+                },
+                {
+                    targets: 3,
                     title: "{{trans('services::services.created_at')}}",
                     render: function(data, type, full, meta) {
                         return full.created_at;
                     },
                 },
                 {
-                    targets: 3,
+                    targets: 4,
                     title: "{{trans('services::services.last_updated_at')}}",
                     render: function(data, type, full, meta) {
                         return full.last_updated_at;
                     },
                 },
                 {
-                    targets: 4,
+                    targets: 5,
                     title: "{{trans('services::services.actions')}}",
                     orderable: false,
                     render: function(data, type, full, meta) {
@@ -169,7 +182,8 @@
     function deleteServiceCallback() {
         // Reload datatable with delay to clear cache
         setTimeout(function() {
-            services_table.ajax.reload(function(json) {
+
+   services_table.ajax.reload(function(json) {
                 //
             }, false);
         }, 3000);

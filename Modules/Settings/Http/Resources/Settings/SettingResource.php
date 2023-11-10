@@ -19,6 +19,7 @@ class SettingResource extends JsonResource
             'tags_manager' => $this->tags_manager,
             'body_tag_manager' => $this->body_tag_manager,
             'pixel_code' => $this->pixel_code,
+            'home_iframe' => $this->home_iframe,
             'enable_ar' => $this->enable_ar,
             'aside_title_en' => $this->aside_title_en,
             'aside_title_ar' => $this->aside_title_ar,

@@ -10,6 +10,8 @@ return [
     'meta_project' => 'Meta Project',
     'inventory_settings' => 'إعدادت المخزون',
     'new_unit' => 'وحدة جديدة',
+        'featured_image' => 'الصورة المميزة',
+    'image_360' => 'الزيارة 360',
     'new_property' => 'وحدة جديدة',
     'new_developer' => 'مُطور جديد',
     'new_project' => 'مشروع جديد',
@@ -38,6 +40,9 @@ return [
     'developer_email' => 'البريد الإلكتروني للمطور',
     'created_at' => 'انشئ فى',
     'updated_at' => 'تم تحديثه فى',
+    'pay_status' => 'حالة الدفع',
+    'service' => ' اسم الخدمه',
+
     'update_developer' => 'تحديث المطور',
     'delete_developer' => 'حذف المطور',
     'filter' => 'تصفية',
@@ -539,6 +544,8 @@ return [
     'i_sell_request_not_found_or_you_are_not_authorized_to_edit_the_i_sell_request' => 'طلب الشراء غير موجود او ليس لديك تصريح لتعديل طلب الشراء',
     'sell_requests' => 'طلبات الشراء',
     'sell_request' => 'طلب الشراء',
+        'sell_unit_requests' => ' طلبات مشاهدة الزيارات',
+
     'update_sell_request' => 'تحديث طلب الشراء',
     'delete_sell_request' => 'حذف طلب الشراء',
     'create_sell_request' => 'إنشاء طلب بيع',

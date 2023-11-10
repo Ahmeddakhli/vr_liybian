@@ -18,9 +18,13 @@ class ISellRequestResource extends JsonResource
      */
     public function toArray($request)
     {
+       
         return [
             'id' => $this->id,
             'compound' => $this->compound,
+            'service' => $this->service ? $this->service : null,
+            'service_name' => $this->service ? $this->service->value : null,
+            'pay_status' => $this->pay_status,
             'purpose_type' => $this->purposeType ? $this->purposeType->value : null,
             'unit_name' => $this->unit_name,
             'comments' => $this->comments,

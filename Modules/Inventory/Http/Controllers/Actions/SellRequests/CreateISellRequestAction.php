@@ -18,7 +18,7 @@ class CreateISellRequestAction
 {
     public function execute($data, $attachments = null)
     {
-        // Create sell request 
+        // Create sell request
         $i_sell_request = ISellRequest::create($data);
 
         // Upload attachments
@@ -68,28 +68,12 @@ class CreateISellRequestAction
         $data['name'] = $i_sell_request->name;
         $data['email'] = $i_sell_request->email;
         $data['phone'] = $i_sell_request->phone;
-
+        $data['service'] = $i_sell_request->service?$i_sell_request->service->value:null;
         // Send mail to receivers
         try {
             ISellRequestMailJob::dispatch($data);
         } catch (\Exception $th) {
         }
-
-        // Notification object construction
-        $notification_object = new NotificationObject;
-        $notification_object->title = $i_sell_request->name . ' ' . Lang::get('inventory::inventory.submitted_a_new_sell_request');
-        $notification_object->body = $i_sell_request->name . ' ' . Lang::get('inventory::inventory.submitted_a_new_sell_request');
-        $notification_object->action_url = route('inventory.sell_requests.index');
-        $notification_object->created = Carbon::now()->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString();
-        $notification_object->icon = 'fas fa-calendar';
-        $notification_object->type = get_class(new ISellRequest);
-        $notification_object->related_models = json_encode([['model_type' => get_class(new ISellRequest), 'model_id' => $i_sell_request->id]]);
-        // Notify users with permissions
-        $notified_users = (new GetUsersHaveEitherPermissionAction)->execute([
-            'index-inventory-sell-requests'
-        ]);
-        GeneralNotificationJob::dispatch(request()->getHttpHost(), $notification_object, $notified_users, auth()->user());
-
         // Transform sell request
         $i_sell_request = new ISellRequestResource($i_sell_request);
 

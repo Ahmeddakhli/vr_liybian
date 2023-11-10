@@ -31,6 +31,26 @@
                 </select>
             </div>
         </div>
+                <div class="form-group row">
+            <!-- Purpose -->
+            <div class="col-6">
+                <label for="i_purpose_id">{{__('inventory::inventory.pay_status')}}</label>
+                <select class="form-control m-bootstrap-select m_selectpicker" data-live-search="true" id="pay_status" name="pay_status" data-parsley-trigger="change focusout"  required data-parsley-required data-parsley-required-message="{{__('inventory::inventory.pay_status')}}">
+                    <option value="" selected disabled>{{__('inventory::inventory.select_purpose')}}</option>
+                        <option value="تم الدفع" @if ($i_sell_request->pay_status == "تم الدفع") selected @endif>تم الدفع</option>
+                        <option value="تم الالغاء" @if ($i_sell_request->pay_status == "تم الالغاء") selected @endif>تم الالغاء</option>
+                        <option value="فى انتظار المراجعه" @if ($i_sell_request->pay_status == "فى انتظار المراجعه") selected @endif>فى انتظار المراجعه	</option>
+
+                </select>
+            </div>
+            <!-- Purpose Type -->
+            {{-- <div class="col-6">
+                <label for="i_purpose_type_id">{{__('inventory::inventory.purpose_type')}}</label>
+                <select class="form-control m-bootstrap-select m_selectpicker" data-live-search="true" id="i_purpose_type_id" name="i_purpose_type_id" data-parsley-trigger="change focusout" required data-parsley-required data-parsley-required-message="{{__('inventory::inventory.please_select_the_purpose_type')}}">
+                    <option value="" selected disabled>{{__('inventory::inventory.select_purpose_type')}}</option>
+                </select>
+            </div> --}}
+        </div>
         <div class="form-group row">
             <div class="col-6">
                 <label for="unit_name">{{__('inventory::inventory.unit_name')}}</label>

@@ -120,6 +120,6 @@ return [
     'about' => 'About',
     'terms' => 'terms & conditions',
     'privacy' => 'Privacy policy',
-    'sell_unit' => 'Sell your unit',
+    'sell_unit' => 'Order a visit',
     'popup_contact_us_title' => 'Contact us title'
 ];

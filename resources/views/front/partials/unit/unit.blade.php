@@ -47,7 +47,7 @@ foreach ($contacts as $key => $contact) {
     <div class="container">
 
         <div class="row gx-2">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <div class="view-page__block">
                     <div class="sticky-holder sticky-top">
                         <nav class="navbar p-0">
@@ -173,8 +173,17 @@ foreach ($contacts as $key => $contact) {
                     @endif
                     <div id="sec-1" class="spy-section view-item-slider">
                         <ul class="nav nav-pills nav-with-indicator mb-3" role="tablist">
+                                    @if ($single_unit->images)
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link d-inline-flex align-items-center gap-1 active"
+                                        data-bs-toggle="pill" data-bs-target="#tab-4" type="button" role="tab"
+                                        aria-selected="false">
+                                        <i class="ri-image-2-line"></i> 360&#176;
+                                    </button>
+                                </li>
+                            @endif
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link d-inline-flex align-items-center gap-1 active"
+                                <button class="nav-link d-inline-flex align-items-center gap-1 "
                                     data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab"
                                     aria-selected="true">
                                     <i class="ri-camera-line"></i> {{ __('main.photos') }}
@@ -189,20 +198,12 @@ foreach ($contacts as $key => $contact) {
                                     </button>
                                 </li>
                             @endif
-                            @if ($single_unit->images)
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link d-inline-flex align-items-center gap-1"
-                                        data-bs-toggle="pill" data-bs-target="#tab-4" type="button" role="tab"
-                                        aria-selected="false">
-                                        <i class="ri-image-2-line"></i> 360&#176;
-                                    </button>
-                                </li>
-                            @endif
+                    
                             <li class="nav-indicator"></li>
                         </ul>
 
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tab-1" role="tabpanel">
+                            <div class="tab-pane fade " id="tab-1" role="tabpanel">
                                 <div class="gallery-large-holder position-relative">
                                     @if ($single_unit->project)
                                         <div class="dev-logo">
@@ -334,10 +335,10 @@ foreach ($contacts as $key => $contact) {
                         @endif
 
                         @if ($single_unit->images)
-                            <div class="tab-pane fade" id="tab-4" role="tabpanel">
-                                <div class="panorama tab-block">
-                                    <div class="swiper panorama-slider">
-                                        <div class="swiper-wrapper mb-5">
+                            <div class="tab-pane fade show active" id="tab-4" role="tabpanel">
+                                <!--<div class="panorama tab-block">-->
+                                <!--    <div class="swiper panorama-slider">-->
+                                <!--        <div class="swiper-wrapper mb-5">-->
                                             @foreach ($single_unit->images as $image)
                                                 <div class="swiper-slide">
                                                     <div class="item">
@@ -349,14 +350,15 @@ foreach ($contacts as $key => $contact) {
                                                 </div>
                                             @endforeach
                                         </div>
-                                        <div class="swiper-button-next panorama-next-btn"></div>
-                                        <div class="swiper-button-prev panorama-prev-btn"></div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
+                                <!--        <div class="swiper-button-next panorama-next-btn"></div>-->
+                                <!--        <div class="swiper-button-prev panorama-prev-btn"></div>-->
+                                <!--        <div class="swiper-pagination"></div>-->
+                                <!--    </div>-->
+                                <!--</div>-->
                             </div>
                         @endif
                     </div>
+            </div>
 
                 </div>
 
@@ -602,80 +604,6 @@ foreach ($contacts as $key => $contact) {
                 @endif
             </div>
 
-        </div>
-
-        <div class="col-lg-3 mt-3 mt-lg-0">
-            <div class="view-page__block ">
-                <aside class="sidebar">
-                    @if (count($single_unit->payment_plans))
-                        <div class="payment-plans">
-                            <div class="swiper payments-slider">
-                                <div class="swiper-wrapper mb-5">
-                                    @foreach ($single_unit->payment_plans as $payment_plan)
-                                        <div class="swiper-slide">
-                                            <div class="plan">
-                                                <ul class="plan__list">
-                                                    <li class="plan__list--item">
-                                                        <span>
-                                                            {{ __('inventory::inventory.down_payment') }}
-                                                        </span>
-                                                        <strong>{{ $payment_plan->down_payment }}%</strong>
-                                                    </li>
-                                                    <li class="plan__list--item">
-                                                        <span>
-                                                            {{ __('inventory::inventory.installments_years') }}
-                                                        </span>
-                                                        <strong>{{ $payment_plan->years_of_installments }}</strong>
-                                                    </li>
-                                                    <li class="plan__list--item">
-                                                        <span>
-                                                            {{ __('inventory::inventory.discount') }}
-                                                        </span>
-                                                        <strong
-                                                            class="text-danger">{{ $payment_plan->discount }}%</strong>
-                                                    </li>
-                                                    <li class="plan__list--item">
-                                                        <span>
-                                                            {{ __('inventory::inventory.delivery_date') }}
-                                                        </span>
-                                                        <strong>{{ $payment_plan->delivery_date }}</strong>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    @endforeach
-
-
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                    @endif
-                    <ul class="item-contacts justify-content-md-end">
-                        <li>
-                            <a href="tel:+{{ $phone_number }}" class="call" title="Call">
-                                <i class="ri-phone-line"></i>
-                                <span class="d-none d-sm-block">{{ __('main.call_now') }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://api.whatsapp.com/send?phone={{ $whatsapp }}" class="whatsapp"
-                                title="Chat">
-                                <i class="ri-whatsapp-line"></i>
-                                <span class="d-none d-sm-block">{{ __('main.chat') }}</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact-modal" class="open-contact-modal visit" data-bs-toggle="modal"
-                                data-bs-whatever="visit" title="Visit">
-                                <i class="ri-building-4-line"></i>
-                                <span class="d-none d-sm-block" data-title="Request A visit!"> {{__('inventory::inventory.request_visit')}}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </aside>
-            </div>
-        </div>
     </div>
     @if (count($relates))
         <div class="mt-5">

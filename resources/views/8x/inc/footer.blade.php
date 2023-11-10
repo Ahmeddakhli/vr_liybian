@@ -9,11 +9,9 @@
             <div class="kt-footer__wrapper">
                 <div class="kt-footer__logo">
                     <div class="kt-footer__copyright">
-                        {{date("Y")}} &copy; صمم بواسطة <a href="https://www.8worx.com" class="m-link" target="_blank">8WORX</a>
                     </div>
                 </div>
                 <div class="kt-footer__menu">
-                    <a href="https://support.8worx.com" target="_blank">Help & Support</a>
                 </div>
             </div>
         </div>

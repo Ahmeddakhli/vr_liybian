@@ -1,6 +1,11 @@
 
 <!--begin: Quick actions -->
 <div class="kt-header__topbar-item dropdown">
+       <div class="kt-header__topbar-wrapper ml-2 mr-2"  data-offset="10px,10px" >
+        <span class="kt-header__topbar-icon" data-skin="dark" data-toggle="kt-tooltip" data-placement="top" title="" data-original-title="{{__('main.home_title')}}">   
+                 <a class="" href="{{ route('front.home2') }}">{{ __('main.home_title') }}</a>
+        </span>
+    </div>
     <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px,10px">
         <span class="kt-header__topbar-icon" data-skin="dark" data-toggle="kt-tooltip" data-placement="top" title="" data-original-title="{{__('main.add_new')}}"><i class="fa fa-plus"></i></span>
     </div>

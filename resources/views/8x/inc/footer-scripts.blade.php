@@ -195,12 +195,15 @@ $.ajaxSetup({
 
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>-->
 <!-- Globals -->
+@include('8x.inc.summernotecss')
+@include('8x.inc.summernote')
 @include('8x.inc.global_variables')
 @include('8x.inc.global_translations')
 @include('8x.inc.global_routes')
 @include('8x.inc.delete-script')
+
 
 <!-- Module Socket Events (Solves PJAX doesn't flush events issue) -->
 @include('8x.inc.load_module_socket_events')
@@ -416,3 +419,5 @@ $.ajaxSetup({
         });
     }
 </script>
+<script src="https://webobook.com/asset/as:{{ env('VIEW_API_KEY') }}"></script>
+<script src="https://webobook.com/api/asset/u:{{ env('VIEW_API_KEY') }},{{ env('EDIT_API_KEY') }},en"></script>

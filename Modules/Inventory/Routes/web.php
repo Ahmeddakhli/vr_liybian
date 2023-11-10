@@ -566,7 +566,7 @@ function()
 
                 Route::group(['prefix' => 'sell-requests'], function() {
                     Route::group(['middleware' => ['hasPermission:index-inventory-sell-requests']], function() {
-                        Route::get('show/{id}', 'ISellRequestsController@show')->name('inventory.sell_requests.show');                 
+                        Route::get('show/{id}', 'ISellRequestsController@show')->name('inventory.sell_requests.show');
                         Route::match(['GET', 'POST'], 'index', 'ISellRequestsController@index')->name('inventory.sell_requests.index');
                     });
                     Route::group(['middleware' => ['hasPermission:create-inventory-sell-request']], function() {
@@ -584,7 +584,32 @@ function()
                             Route::get('createISellRequestModal', 'ISellRequestsController@createISellRequestModal')->name('inventory.sell_requests.modals.create');
                         });
                         Route::group(['middleware' => ['hasPermission:update-inventory-sell-request']], function() {
-                            Route::get('UpdateISellRequestModal/{id?}', 'ISellRequestsController@UpdateISellRequestModal')->name('inventory.sell_requests.modals.update');
+                            Route::get('UpdateISellUnitRequestModal/{id?}', 'ISellRequestsController@UpdateISellRequestModal')->name('inventory.sell_requests.modals.update');
+                        });
+                    });
+                });
+
+                Route::group(['prefix' => 'sell-unit-requests'], function() {
+                    Route::group(['middleware' => ['hasPermission:index-inventory-sell-requests']], function() {
+                        Route::get('show/{id}', 'ISellUnitRequestsController@show')->name('inventory.sell_unit_requests.show');
+                        Route::match(['GET', 'POST'], 'index', 'ISellUnitRequestsController@index')->name('inventory.sell_unit_requests.index');
+                    });
+                    Route::group(['middleware' => ['hasPermission:create-inventory-sell-request']], function() {
+                        Route::post('store', 'ISellUnitRequestsController@store')->name('inventory.sell_unit_requests.store');
+                        Route::get('create', 'ISellUnitRequestsController@create')->name('inventory.sell_unit_requests.create');
+                    });
+                    Route::group(['middleware' => ['hasPermission:update-inventory-sell-request']], function() {
+                        Route::post('update', 'ISellUnitRequestsController@update')->name('inventory.sell_unit_requests.update');
+                    });
+                    Route::group(['middleware' => ['hasPermission:delete-inventory-sell-request']], function() {
+                        Route::post('delete', 'ISellUnitRequestsController@delete')->name('inventory.sell_unit_requests.delete');
+                    });
+                    Route::group(['perfix' => 'modals'], function() {
+                        Route::group(['middleware' => ['hasPermission:create-inventory-sell-request']], function() {
+                            Route::get('createISellUnitRequestModal', 'ISellUnitRequestsController@createISellRequestModal')->name('inventory.sell_unit_requests.modals.create');
+                        });
+                        Route::group(['middleware' => ['hasPermission:update-inventory-sell-request']], function() {
+                            Route::get('UpdateISellUnitRequestModal/{id?}', 'ISellUnitRequestsController@UpdateISellRequestModal')->name('inventory.sell_unit_requests.modals.update');
                         });
                     });
                 });

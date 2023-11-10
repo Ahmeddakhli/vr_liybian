@@ -71,6 +71,9 @@ class CreateIUnitRequest extends FormRequest
         $array['i_design_type_id'] = "nullable|exists:i_design_types,id,deleted_at,NULL";
         $array['is_featured'] = ['nullable', Rule::in(['on', 'off'])];
         $array['ready_to_move'] = ['nullable', Rule::in(['on', 'off'])];
+                $array['is_payed_to_show'] = ['nullable', Rule::in(['on', 'off'])];
+        $array['featured_image'] = "required|max:102400|mimes:tiff,jpeg,png,jpg";
+
         $array['price'] = "nullable|integer|max:2147483647";
         $array['rent_price'] = "nullable|integer|max:2147483647";
         $array['resale_price'] = "nullable|integer|max:2147483647";

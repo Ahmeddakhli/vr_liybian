@@ -3,8 +3,8 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="author" content="advisors">
-<meta name="publisher" content="advisors">
+<meta name="author" content="libyan-cube">
+<meta name="publisher" content="libyan-cube">
 <meta name="yandex-verification" content="" />
 <meta name="google-site-verification" content="" />
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -22,13 +22,16 @@
 <link rel="stylesheet" href="{{ URL::asset('front/css/bootstrap.min.css') }}?ver={{ env('FILES_VER') }}">
 <link rel="stylesheet" href="{{ URL::asset('front/css/index.css') }}?ver={{ env('FILES_VER') }}">
 <link rel="stylesheet" href="{{ URL::asset('front/css/addition.css') }}?ver={{ env('FILES_VER') }}">
+<link rel="stylesheet" href="{{ URL::asset('front/css/remixicon.css') }}?ver={{ env('FILES_VER') }}">
+
 
 <!-- Remix icon (LIBRARY OF ICONS) -->
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<!--<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">-->
+<!--@include('8x.inc.remixiconcss')-->
 
 <script>
   // avoid FART (Flash of inAccurate coloR Theme)
-  const HtmlClass = localStorage.getItem('dark-mode') === "true" ? "dark-mode" : null;
+  const HtmlClass = localStorage.getItem('dark-mode') === "false" ? "white-mode" : null;
 
   document.documentElement.classList.add(HtmlClass);
 </script>

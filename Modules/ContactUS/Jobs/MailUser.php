@@ -38,10 +38,10 @@ class MailUser implements ShouldQueue
     public function handle()
     {
         // (new ConectContactUsWithCRMAction)->execute($this->data);
-        // Get contact  
+        // Get contact
         $contact_us_mails = Contact::where('type', 'contact_us')->pluck('value')->toArray();
 
-        // Prepare  Mail data 
+        // Prepare  Mail data
         $subject = 'Contact US';
         $sender = env('MAIL_NO_REPLY');
         $best_from = isset($data['best_time_to_call_from']) && !is_null($data['best_time_to_call_from']) ? $data['best_time_to_call_from'] : '';
@@ -92,7 +92,7 @@ class MailUser implements ShouldQueue
                 'item_link' => isset($this->data['item_link']) ? $this->data['item_link'] : null,
             ];
             if(is_null($this->data['model_name'])){
-                $all_data['item_link'] = '<a href="' . URL::to('/') . '"><span style="font-weight:bold;">' . 'advisors Properties' . '</span></a>';
+                $all_data['item_link'] = '<a href="' . URL::to('/') . '"><span style="font-weight:bold;">' . 'libyan-cube Properties' . '</span></a>';
             }
             Mail::to($this->data['email'])->send(new ThankyouMail($subject, $sender, $all_data, $best_from, $best_to));
         } catch (\Exception $th) {

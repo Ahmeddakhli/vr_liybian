@@ -15,8 +15,8 @@
 <meta itemprop="description" content="{{ strip_tags($single_unit->meta_description ? $single_unit->meta_description : substr($single_unit->description, 0, 150)) }}" />
 <!-- Twitter Card data -->
 <meta name='twitter:app:country' content='EG' />
-<meta name="twitter:site" content="@advisors" />
-<meta name="twitter:creator" content="@advisors" />
+<meta name="twitter:site" content="@libyan-cube" />
+<meta name="twitter:creator" content="@libyan-cube" />
 <meta name="twitter:title" content="{{$single_unit->meta_title ? $single_unit->meta_title : $single_unit->title}}">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{ URL::asset('/front/images/logo.png') }}">
@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="Constguide">
 <meta property="og:url" content="{{Request::url()}}" />
 <meta property="og:title" content="{{$single_unit->meta_title ? $single_unit->meta_title : $single_unit->title}}" />
-<meta property="og:image" content="{{$single_unit->attachments[0]->url?$single_unit->attachments[0]->url: URL::asset('/front/images/logo.png') }}">
+<meta property="og:image" content="{{$single_unit->attachments?$single_unit->attachments[0]->url: URL::asset('/front/images/logo.png') }}">
 <meta property="og:description" content="{{ strip_tags($single_unit->meta_description ? $single_unit->meta_description : substr($single_unit->description, 0, 150)) }}" />
 @endpush
 
@@ -101,7 +101,7 @@ $('[data-fancybox]').fancybox(defaults);
     "description": "{{$single_unit->meta_description}}",
     "sku": "{{$single_unit->id}}",
     "mpn": "{{$single_unit->id}}",
-    "brand": { "@type": "Brand", "name": "{{$single_unit->project ? $single_unit->project->project : 'advisors Properties'}}" },
+    "brand": { "@type": "Brand", "name": "{{$single_unit->project ? $single_unit->project->project : 'libyan-cube Properties'}}" },
     "review": {
       "@type": "Review",
       "reviewRating": {
@@ -109,7 +109,7 @@ $('[data-fancybox]').fancybox(defaults);
         "ratingValue": "4",
         "bestRating": "5"
       },
-      "author": { "@type": "Organization", "name": "advisors Properties" }
+      "author": { "@type": "Organization", "name": "libyan-cube Properties" }
     },
     "aggregateRating": {
       "@type": "AggregateRating",

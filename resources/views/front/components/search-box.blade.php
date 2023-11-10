@@ -179,11 +179,11 @@
         <div class="col-lg-11">
           <div class="row g-2">
 
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-12">
               <input class="form-control" type="text" name="q" value="{{request('q')}}" placeholder="Project, Developer">
             </div>
 
-            <div class="col-6 col-md-3">
+            {{-- <div class="col-6 col-md-3">
               <select class="form-select form-select-checkbox" multiple
               placeholder="{{ __('inventory::inventory.bedrooms') }} & {{ __('inventory::inventory.bedrooms') }}"
               name="bed_bath_rooms[]">
@@ -202,9 +202,9 @@
                   @endforeach
               </optgroup>
               </select>
-            </div>
+            </div> --}}
 
-            <div class="col-6 col-md-3">
+            {{-- <div class="col-6 col-md-3">
               <select class="form-select dd-select" placeholder="{{ __('main.purpose') }}"
                 name="purpose_ids[]" multiple>
                 @foreach ($purposes as $purpose)
@@ -213,9 +213,9 @@
                     </option>
                 @endforeach
               </select>
-            </div>
+            </div> --}}
 
-            <div class="col-12 collapse" id="moreOptions">
+            {{-- <div class="col-12 collapse" id="moreOptions">
               <div class="row g-2 align-items-center">
 
                 <div class="col-6 col-lg-3 col-sm-4">
@@ -337,7 +337,7 @@
                         </div>
                     @endforeach
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
 
@@ -350,9 +350,9 @@
 
       </div>
 
-      <button type="button" data-bs-toggle="collapse" data-bs-target="#moreOptions" aria-expanded="false"
+      {{-- <button type="button" data-bs-toggle="collapse" data-bs-target="#moreOptions" aria-expanded="false"
         class="more-options-btn">
-      </button>
+      </button> --}}
 
     </form>
     <div class="most-searched mt-2">

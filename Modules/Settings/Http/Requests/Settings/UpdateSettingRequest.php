@@ -19,6 +19,7 @@ class UpdateSettingRequest extends FormRequest
             'tags_manager' => 'nullable|string|max:65457',
             'body_tag_manager'=> 'nullable|string|max:65457',
             'pixel_code' => 'nullable|string|max:65457',
+            'home_iframe' => 'nullable|string|max:65457',
             'enable_ar' => ['nullable', Rule::in(['on', 'off'])],
             'aside_title_en' => 'nullable|string|max:191',
             'aside_title_ar' => 'nullable|string|max:191',

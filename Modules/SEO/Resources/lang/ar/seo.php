@@ -110,6 +110,6 @@ return [
     'about'=>'عنا',
     'terms' => 'الشروط والاحكام',
     'privacy' => 'سياسية الخصوصية',
-    'sell_unit' => 'أضف عقارك',
+    'sell_unit' => 'طلب زيارة',
     'popup_contact_us_title' => 'عنوان التواصل معانا'
 ];

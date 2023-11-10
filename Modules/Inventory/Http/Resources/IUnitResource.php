@@ -57,6 +57,7 @@ class IUnitResource extends JsonResource
             'title' => $this->title,
             'default_title' => $this->default_title,
             'slug' => $this->slug,
+                        'is_payed_to_show' => $this->is_payed_to_show,
             'project' => $this->project ? new IProjectMinimalResource($this->project) : null,
             'unit_number' => $this->unit_number,
             'building_number' => $this->building_number,
@@ -111,6 +112,8 @@ class IUnitResource extends JsonResource
             'design_type' => $this->designType ? $this->designType->value : null,
             'availability' => $availability,
             // 'url' => route('inventory.units.unit', ['id' => $this->id]),
+                        'featured_image' =>  asset('storage/' . $this->featured_image),
+
             'facilities' => $this->facilities ? IFacilityMinimalResource::collection($this->facilities) : null,
             'amenities' => $this->amenities ? IAmenityMinimalResource::collection($this->amenities) : null,
             'tags' => $this->tags ? TagResource::collection($this->tags) : null,

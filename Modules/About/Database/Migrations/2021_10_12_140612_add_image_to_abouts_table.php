@@ -15,6 +15,8 @@ class AddImageToAboutsTable extends Migration
     {
         Schema::table('about', function (Blueprint $table) {
             $table->mediumText('image')->nullable();
+            $table->mediumText('video_url')->nullable();
+
         });
     }
 

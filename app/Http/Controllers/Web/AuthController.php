@@ -115,7 +115,7 @@ class AuthController extends Controller
             return response()->json($resp, 401);
         }
 
-    
+
         // Update user last_login_at and last_login_ip && timezone
         $user = Auth::user();
         $user->last_login_at = Carbon::now();
@@ -140,7 +140,7 @@ class AuthController extends Controller
             ];
             return response()->json($resp, 401);
         }
-        
+
         // Store compares in user account
         $session = $request->session()->get('_token');
         Compare::where('session', $session)->update([
@@ -161,7 +161,11 @@ class AuthController extends Controller
         // return view('auth.login');
         return view('dashboard.pages.auth.login');
     }
-
+    public function showLoginFormfront()
+    {
+        // return view('auth.login');
+        return view('front.pages.login2');
+    }
     /**
      * Logout user (Revoke the token)
      *

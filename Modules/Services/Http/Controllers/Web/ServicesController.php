@@ -23,6 +23,11 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Yajra\Datatables\Datatables;
 use App\Language;
 use Modules\Services\ServiceCategory;
+use GuzzleHttp\Client;
+use Modules\Inventory\Http\Controllers\Actions\SellRequests\CreateISellRequestAction;
+use Modules\Services\Http\Controllers\Actions\Services\GetServiceByIdAction;
+use Modules\Services\Http\Requests\Services\Delete1ServiceRequest;
+use Validator;
 
 class ServicesController extends Controller
 {
@@ -30,7 +35,7 @@ class ServicesController extends Controller
      * Store service
      *
      * @param  [string] is_featured
-     * @param  [array] translations 
+     * @param  [array] translations
      * @return [json] ServiceResponse object
      */
     public function store(CreateServiceRequest $request, CreateServiceAction $action)
@@ -51,7 +56,7 @@ class ServicesController extends Controller
      *
      * @param  [integer] id
      * @param  [string] is_featured
-     * @param  [array] translations 
+     * @param  [array] translations
      * @return [json] ServiceResponse object
      */
     public function update(UpdateServiceRequest $request, UpdateServiceAction $action)
@@ -67,6 +72,104 @@ class ServicesController extends Controller
         return response()->json($resp, 200);
     }
 
+    public function show($id)
+    {
+        // Get the languages
+
+        return view('services::services.services', compact('id'), [])->render();
+    }
+    public function pay(Request $request)
+    {
+        // Process form data here
+        $validator = \Validator::make($request->all(), [
+            'unit_name' => 'required',
+            'attachments' => 'nullable|array|min:1', // Adjust as needed
+            'i_purpose_id' => 'required',
+            'service_id' => 'nullable',
+            'pay_status' => 'nullable',
+            'i_purpose_type_id' => 'required',
+            'name' => 'required',
+            'email' => 'email',
+            'phone' => 'required',
+            'comments' => 'required',
+        ], [
+            'unit_name.required' => __('main.please_enter_your_unit_name'),
+            'attachments.required' => __('main.please_enter_your_attachments'),
+            // Add more custom messages for other fields as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route("services.show", $request->service_id)->withErrors($validator)->withInput();
+        }
+        $service = (new GetServiceByIdAction)->execute($request->service_id);
+        $service->value;
+        $additionalData = [
+            'pay_status' => 'فى انتظار المراجعه',
+            "service_id" => "kkkk"
+        ];
+
+        $request->merge($additionalData);
+
+        $order =   (new CreateISellRequestAction)->execute($request->except('attachments'), $request->attachments);
+        $url = 'https://c7drkx2ege.execute-api.eu-west-2.amazonaws.com/payment/initiate';
+
+        $headers = [
+            'Accept: application/json',
+            'Authorization: Bearer P0siHRT9U2pPHjUlGZnDTK8hD1ccbekvibAZPUn6',
+            'Content-Type: application/x-www-form-urlencoded'
+        ];
+
+        $data = [
+            'id' => 'oQV9rwLA4zGML1xmWbgldOn6eP2RVovXgXp3qXQD9yKNjB0k7waArJE5YmgPedN0',
+            'amount' => $service->price,
+            'phone' => "924287386",
+            'email' => $request->email,
+            'backend_url' => 'https://libyancube.com/en/services/back',
+            'frontend_url' => 'https://libyancube.com/en/services/back',
+            'custom_ref' => "custom_ref" . $order->id
+        ];
+        // "store_id"=>'OmAyaKL7LxE7lVGO2eaJD9kNw165RrvVoeZMbPWAdgByKQzo0Y3mj4qXnxgjQMD6',
+        // "transaction_ref"=>"LXWJ4250",
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+        $responseData = json_decode($response);
+        if (isset($responseData->result) && $responseData->result === 'success') {
+            // Success response handling
+            // $customRef = $response['custom_ref'];
+            $url = $responseData->url;
+
+            // Perform actions with the successful response data
+            // For example, redirect the user to the generated URL
+            return redirect($url);
+        } else {
+            dd($responseData);
+            $massage = $responseData->message;
+            return view('front.pages.show-errors', compact('massage'));
+
+            // Error response handling
+            $errorMessage = $responseData->message;
+            $errors = $responseData->errors;
+
+            // Perform actions with the error response data
+            // For example, display the error message and errors to the user
+            return response()->json('Notification not found', 422);
+        }
+    }
+    public function back(Request $request)
+    {
+        dd($request);
+    }
     /**
      * Delete service
      *

@@ -8,6 +8,7 @@ use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Support\Facades\Event;
+use Modules\Services\Service;
 use Wildside\Userstamps\Userstamps;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
@@ -41,7 +42,7 @@ class ISellRequest extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'id', 'compound', 'i_purpose_id', 'i_purpose_type_id', 'unit_name', 'comments', 'name', 'email', 'phone', 'is_seen', 'created_at', 'updated_at'
+        'id', 'compound', 'i_purpose_id', 'i_purpose_type_id', 'unit_name', 'comments', 'name', 'email', 'phone','pay_status' , 'service_id','is_seen', 'created_at', 'updated_at'
     ];
 
     protected $appends = [
@@ -78,6 +79,11 @@ class ISellRequest extends Model implements HasMedia
     public function purpose(){
         return $this->belongsTo('Modules\Inventory\IPurpose', 'i_purpose_id', 'id');
     }
+
+    public function service(){
+        return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
+    
 
     public function registerMediaCollections()
     {

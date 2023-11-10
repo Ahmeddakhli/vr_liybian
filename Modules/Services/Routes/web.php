@@ -18,6 +18,10 @@ Route::group(
     ],
     function()
     {
+        Route::post('services/pay', 'ServicesController@pay')->name("services.pay");
+        Route::match(['get', 'post'], '/services/back', 'ServicesController@back')->name("services.back");
+        Route::get('services/show/{id}', 'ServicesController@show')->name('services.show');
+
     Route::group(['prefix' =>'admin', 'middleware' => ['web', 'auth','isAdmin']], function () {
         Route::prefix('services')->group(function () {
             Route::group(['middleware' => []], function () {
@@ -44,6 +48,6 @@ Route::group(
                 });
             });
     });
-  
+
 });
 });

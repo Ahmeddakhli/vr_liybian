@@ -69,6 +69,11 @@
                                             <label for="image"><strong>{{__('settings::settings.image_dimensions')}}::450 × 450 px</strong></label>
 
                                         </div>
+                                        <div class="col-6 mt-5">
+                                            <label for="video_url">{{ __('about::about.video_url') }}</label>
+                                            <input name="video_url" id="video_url" type="url" class="form-control">
+
+                                        </div>
                                         <div class="col-12 repeater">
                                             <div data-repeater-list="translations">
                                                 <div data-repeater-item class="row">

@@ -39,7 +39,7 @@
                                 </a>
                             @endhaspermission
                             --}}
-                           
+
                         </div>
                     </div>
                 </div>
@@ -54,6 +54,8 @@
                                 <th>{{__('inventory::inventory.id')}}</th>
                                 <th>{{__('inventory::inventory.compound')}}</th>
                                 <th>{{__('inventory::inventory.unit_name')}}</th>
+                                <th >{{__('inventory::inventory.pay_status')}}</th>
+                                <th >{{__('inventory::inventory.service')}}</th>
                                 <th>{{__('inventory::inventory.is_seen')}}</th>
                                 <th>{{__('inventory::inventory.created_at')}}</th>
                                 <th>{{__('inventory::inventory.last_updated_at')}}</th>

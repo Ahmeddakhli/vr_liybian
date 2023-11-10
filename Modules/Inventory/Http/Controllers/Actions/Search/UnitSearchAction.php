@@ -33,7 +33,10 @@ class UnitSearchAction
         if (isset($data['q']) && !empty($data['q'])) {
 
             $units = $units->where(function ($query) use ($data) {
-                $query->whereHas('project', function ($query) use ($data) {
+                $query->whereHas('translations', function ($translations) use ($data) {
+                        $translations->where('title', 'like', '%' . $data['q'] . '%');
+                    })
+                ->orwhereHas('project', function ($query) use ($data) {
                     $query->whereHas('translations', function ($translations) use ($data) {
                         $translations->where('project', 'like', '%' . $data['q'] . '%');
                     })->orwhereHas('developer', function ($developer) use ($data) {

@@ -13,12 +13,15 @@ $page_name = 'home';
       @endif
 @endforeach
 @section('content')
+      @include('front.partials.home.about2')
 
     <!-- START BANNER -->
-      @if (count($sliders))
-        @include('front.partials.home.slider')
-      @endif
-      
+      <!--@if (count($sliders))-->
+      {{-- @include('front.partials.about.about') --}}
+
+        {{-- @include('front.partials.home.slider') --}}
+      <!--@endif-->
+
     <!-- START DEVELOPERS -->
     @if (count($developers))
       <!--  START PROJECTS  -->

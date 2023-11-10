@@ -16,7 +16,7 @@
     window.Laravel = {!! json_encode([
         'user' => Auth::user(),
         'csrfToken' => csrf_token(),
-        'notification_base' => '/advisors',
+        'notification_base' => '/libyan-cube',
         'vapidPublicKey' => config('webpush.vapid.public_key'),
         'pusher' => [
             'key' => config('broadcasting.connections.pusher.key'),
@@ -92,7 +92,7 @@
 <!--end::Global Theme Styles -->
 
 @if(LaravelLocalization::getCurrentLocale() == 'ar')
-setLocale(LC_TIME, 'ar');
+<!--setLocale(LC_TIME, 'ar');-->
 <!--begin::Global RTL) -->
 <link href="{{asset('8x/assets/demo/default/base/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('8x/assets/css/8worx-rtl.css?ver='.env('FILES_VER'))}}" rel="stylesheet" type="text/css" />
@@ -129,6 +129,7 @@ setLocale(LC_TIME, 'ar');
 </script>
 
 <link href="{{asset('8x/assets/packages/summernote-0.8.18-dist/summernote.min.css')}}" rel="stylesheet">
-
+<link rel="stylesheet" href="https://webobook.com/css/evovr.css">
+<link rel="stylesheet" href="https://webobook.com/css/evovr-preview.css">
 @include('8x.inc.js-trans')
 @include('8x.inc.js-objects')

@@ -79,6 +79,8 @@ class HomeController extends Controller
         $unit_prices_list = $action->execute();
         $action = new GetFeaturedBlogsAction;
         $blogs = json_decode(json_encode($action->execute()));
+                $action = new GetAboutAction();
+        $abouts = json_decode(json_encode($action->execute()));
         return [
             'projects' => $projects,
             'units' => $units,
@@ -95,7 +97,8 @@ class HomeController extends Controller
             'unit_prices_list' => $unit_prices_list,
             'bathrooms' => $bathrooms,
             'furnishing_statuses' => $furnishing_statuses,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+                 "abouts" => $abouts,
         ];
     }
 
@@ -109,9 +112,15 @@ class HomeController extends Controller
         // Get home page data
         $features = $this->features();
 
+        return view('front.pages.home2', $features);
+    }
+    public function index2()
+    {
+        // Get home page data
+        $features = $this->features();
+
         return view('front.pages.home', $features);
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -128,7 +137,7 @@ class HomeController extends Controller
 
     public function locationSearch($search, FindLocationAction $action)
     {
-        // Search Location 
+        // Search Location
         $location = $action->execute($search);
 
         return $location;

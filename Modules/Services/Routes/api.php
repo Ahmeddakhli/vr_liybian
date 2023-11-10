@@ -21,6 +21,7 @@ Route::group(['namespace' => 'Api'], function () {
                 Route::get('/', 'ServicesController@index');
                 Route::post('store', 'ServicesController@store');
                 Route::post('update', 'ServicesController@update');
+
                 Route::post('delete', 'ServicesController@delete');
             });
         });

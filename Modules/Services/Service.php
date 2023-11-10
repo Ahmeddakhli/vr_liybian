@@ -45,7 +45,7 @@ class Service extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'id','is_featured','icon', 'created_at', 'updated_at'
+        'id','is_featured','icon',"price", 'created_at', 'updated_at'
     ];
 
     protected $appends = [
@@ -149,7 +149,7 @@ class Service extends Model implements HasMedia
             ->useDisk('public');
     }
 
-    // Handle IS Featured 
+    // Handle IS Featured
     public function setIsFeaturedAttribute($value)
     {
         if ($value === "on") {

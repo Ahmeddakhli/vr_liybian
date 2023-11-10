@@ -41,6 +41,7 @@ class StoreAttachmentAction
                 // Return the attachment
                 return $attachment;
         }
+        // dd(public_path('storage/' . $attachment->path));
 		// Store the file
 		$image = Image::make(public_path('storage/' . $attachment->path));
 		// $waterMark = Image::make(public_path('front/img/icons/logo.png'));

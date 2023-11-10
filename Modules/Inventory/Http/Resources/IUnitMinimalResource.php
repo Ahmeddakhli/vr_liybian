@@ -74,6 +74,8 @@ class IUnitMinimalResource extends JsonResource
             'offering_type' => ($this->offeringType && $this->offeringType->value) ? $this->offeringType->value : $this->offeringType->default_value,
             'offering_type_id' => $this->i_offering_type_id,
             'price' => $price,
+                        'featured_image' =>  asset('storage/' . $this->featured_image),
+
             'currency_code' => $this->currency_code,
             'full_price' => $this->price,
             'down_payment_string' => $this->down_payment,

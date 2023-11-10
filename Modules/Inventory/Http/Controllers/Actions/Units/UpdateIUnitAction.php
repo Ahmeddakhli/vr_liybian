@@ -25,6 +25,9 @@ class UpdateIUnitAction
     {
         // Get the  unit
         $i_unit = IUnit::find($id);
+            if (isset($data['featured_image']) && is_file($data['featured_image'])) {
+            $data['featured_image'] = $data['featured_image']->store('unit_featured_image', 'public');
+        }
 
         $created_at = Carbon::now()->toDateTimeString();
         $updated_at = Carbon::now()->toDateTimeString();
@@ -32,7 +35,7 @@ class UpdateIUnitAction
         // Update/Create translations
         foreach ($data['translations'] as $translation) {
             // To overcome composite primary key laravel update issue
-            if (($translation['address'] || $translation['description']) && isset($translation['language_id'])) {
+            if (( $translation['description']) && isset($translation['language_id'])) {
                 $i_unit_id = $id;
                 $language_id = $translation['language_id'];
                 $title = $translation['title'];
@@ -73,6 +76,8 @@ class UpdateIUnitAction
         // Update the i_unit
         $data['is_featured'] = isset($data['is_featured']) ? $data['is_featured'] : 0;
         $data['ready_to_move'] = isset($data['ready_to_move']) ? $data['ready_to_move'] : 0;
+                $data['is_payed_to_show'] = isset($data['is_payed_to_show']) ? $data['is_payed_to_show'] : 0;
+
 
         $i_unit->update($data);
 

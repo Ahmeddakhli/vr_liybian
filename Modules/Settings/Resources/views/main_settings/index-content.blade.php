@@ -103,7 +103,10 @@
                                     <label class="h6" for="pixel_code">{{__('settings::settings.pixel_code')}}</label>
                                     <textarea rows="6" name="pixel_code" id="pixel_code" type="text" class="form-control" placeholder="{{__('settings::settings.pixel_code')}}" data-parsley-trigger="change focusout">{{$setting->pixel_code}}</textarea>
                                 </div>
-
+                                <div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+                                    <label class="h6" for="home_iframe">{{__('settings::settings.home_iframe')}}</label>
+                                    <textarea rows="6" name="home_iframe" id="home_iframe" type="text" class="form-control" placeholder="{{__('settings::settings.home_iframe')}}" data-parsley-trigger="change focusout">{{$setting->home_iframe}}</textarea>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-6 mt-5">

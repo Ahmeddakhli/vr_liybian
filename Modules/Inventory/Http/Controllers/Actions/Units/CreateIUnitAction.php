@@ -23,7 +23,9 @@ class CreateIUnitAction
         // Append slug
         $data['unit_number'] = rand(pow(10, 6 - 1), pow(10, 6) - 1);
         $data['slug'] = str_slug($data['unit_number']);
-
+   if (isset($data['featured_image']) && is_file($data['featured_image'])) {
+            $data['featured_image'] = $data['featured_image']->store('unit_featured_image', 'public');
+        }
         // Create the i_unit
         $i_unit = new IUnit($data);
         $i_unit->save();

@@ -4,7 +4,11 @@
 @include('dashboard.styles.custom')
 
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+    @foreach ($errors->all() as $error)
+    <small>{{trans('services::services.list')}}</small>
 
+    {{ $error }}
+@endforeach
     <!-- begin:: Content -->
     <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
         <!-- begin:: Content -->
@@ -109,6 +113,7 @@
                             <tr>
                                 <th>{{__('services::services.id')}}</th>
                                 <th>{{__('services::services.service')}}</th>
+                                <th>{{__('services::services.price')}}</th>
                                 <th>{{__('services::services.created_at')}}</th>
                                 <th>{{__('services::services.last_updated_at')}}</th>
                                 <th>{{__('services::services.actions')}}</th>

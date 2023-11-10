@@ -91,7 +91,7 @@
                                     <li><a href="{{route('front.properties')}}">{{__('main.all_properties')}}</a></li>
                                     <li><a href="{{route('front.blogs')}}">{{__('main.blog')}}</a></li>
                                     <li><a href="{{route('front.projects')}}">{{__('main.projects')}}</a></li>
-                                    <li><a href="{{route('front.privacies')}}">{{__('main.privcy_policy')}}</a></li>
+                                    <!--<li><a href="{{route('front.privacies')}}">{{__('main.privcy_policy')}}</a></li>-->
                                 </ul>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
           <p>
                 <bdi>
                     {{__('main.all_rights_reserved')}}
-                    {{-- <a href='https://theadvisors-egy.com:2096/' target='_blank' class='eight-worx-webpage'>
+                    {{-- <a href='https://thelibyan-cube-egy.com:2096/' target='_blank' class='eight-worx-webpage'>
                         Webmail
                     </a> --}}
                     {{-- {{__('main.all_rights_reserved_after')}}

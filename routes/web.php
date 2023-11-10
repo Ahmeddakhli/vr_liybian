@@ -22,6 +22,13 @@ use Modules\Locations\LocationTranslation;
 Route::get('test', function () {
     phpinfo();
 });
+Route::get('view/{id}', function ($id) {
+    $data = [
+        'id' => $id,
+    ];
+
+    return view('front.pages.view', $data);
+})->name('view');
 Route::get('fixAll', function () {
     $projects = IProjectTranslation::whereNull('deleted_at')->get();
     $locations = LocationTranslation::whereNull('deleted_at')->get();
@@ -149,7 +156,7 @@ Route::group(
             /*************************************************************************
              * DEFAULT
              *************************************************************************/
-            Route::get('login', 'AuthController@showLoginForm');
+            // Route::get('front/login', 'AuthController@showLoginFormfront')->name('front.login');
 
             /*************************************************************************
              * AUTHENTICATION
@@ -173,6 +180,8 @@ Route::group(
              * HOME
              *************************************************************************/
             Route::get('/', 'HomeController@index')->name('front.home');
+            Route::get('/home', 'HomeController@index2')->name('front.home2');
+
             Route::post('/storeFireMessages', 'HomeController@storeFireMessages')->name('front.fire_messages_store');
             Route::post('/sellRequest', 'HomeController@sell')->name('front.home.sell_request.store');
             Route::get('/sell-property', 'HomeController@sellProperty')->name('front.sellProperty');
@@ -223,6 +232,8 @@ Route::group(
             /*************************************************************************
              * UNIT
              *************************************************************************/
+            Route::post('units/pay', 'UnitsController@pay')->name("units.pay");
+
             Route::get('/properties/{id}/{title?}', 'UnitsController@show')->name('front.singleUnit');
             Route::get('projects/properties/{project_id}-{title?}', 'SearchController@properties')->name('front.project.properties');
 
@@ -289,10 +300,10 @@ Route::group(
          * GUEST
          **************************************************************************/
         Route::group(['middleware' => ['guest']], function () {
-            Route::group(['namespace' => 'Front'], function () {
-                Route::get('login', 'HomeController@login')->name('front.login');
-            });
-            Route::post('login', 'AuthController@login')->name('front.login');
+            // Route::group(['namespace' => 'Front'], function () {
+                Route::get('front/login', 'AuthController@showLoginFormfront')->name('front.login');
+            // });
+            Route::post('store/front/login', 'AuthController@login')->name('store.front.login');
 
             Route::post('register', 'AuthController@register')->name('register');
         });

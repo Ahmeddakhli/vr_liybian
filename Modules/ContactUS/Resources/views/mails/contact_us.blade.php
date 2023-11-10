@@ -5,7 +5,7 @@
     </div>
 
     <div style="text-align: left; color:black;">
-        Dear all,         
+        Dear all,
     </div>
     <br>
 
@@ -16,11 +16,11 @@
     @endif
 
     <br>
-    
+
     <div style="text-align: left; color:black;">
-        A New message from advisors Website. Here are the details:
+        A New message from libyan-cube Website. Here are the details:
     </div>
-    
+
     <br>
 
     <ul style="text-align: left; color: black; font-weight: 400;">
@@ -36,7 +36,7 @@
         @if(isset($content['link']))
             <li> Page Link : {{ $content["link"] }}</li>
         @endif
-        
+
         @if(isset($content['best_time_to_call_from']))
             <li> Best Time To Call : {{ $content["best_time_to_call_from"] }}</li>
         @endif
@@ -46,7 +46,7 @@
     </ul>
 
     <div style="text-align: left; color:black; font-size: 1.2rem;">
-        Message : 
+        Message :
     </div>
     <br>
     <div style="text-align: left; color:black;">
@@ -63,7 +63,7 @@
     <br>
     <br>
     <div style="text-align: center;">
-        <h6 style="color:black;">Note: This is automated email generated from <a href="{{route('front.home')}}">advisors</a> website </h6>
+        <h6 style="color:black;">Note: This is automated email generated from <a href="{{route('front.home')}}">libyan-cube</a> website </h6>
     </div>
 
 </div>

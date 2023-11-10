@@ -105,6 +105,8 @@ class IUnitExportResource extends JsonResource
             'full_price' => $this->price,
             'down_payment_string' => $this->down_payment,
             'number_of_installments' => $this->number_of_installments,
+                        'featured_image' =>  asset('storage/' . $this->featured_image),
+
             'installments' => $this->installments,
             'description' => $this->description,
             'buyer' => $this->buyer ? new UserMinimalResource($this->buyer) : null,

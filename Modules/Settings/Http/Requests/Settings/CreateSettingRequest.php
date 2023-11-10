@@ -17,6 +17,7 @@ class CreateSettingRequest extends FormRequest
         return [
             'tags_manager' => 'nullable|string|max:65457',
             'pixel_code' => 'nullable|string|max:65457',
+            'home_iframe' => 'nullable|string|max:65457',
             'enable_ar'=>['nullable',Rule::in(['on','off'])],
             'body_tag_manager'=> 'nullable|string|max:65457',
             'aside_title_en'=>'nullable|string|max:191',

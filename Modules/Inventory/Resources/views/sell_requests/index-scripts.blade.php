@@ -66,6 +66,16 @@
                     searchable: true
                 },
                 {
+                    data: 'pay_status',
+                    orderable: true,
+                    searchable: true
+                },
+                {
+                    data: 'service',
+                    orderable: true,
+                    searchable: true
+                },
+                {
                     data: 'created_at',
                     orderable: true,
                     searchable: true
@@ -101,6 +111,22 @@
                 },
                 {
                     targets: 3,
+                    title: "{{trans('inventory::inventory.pay_status')}}",
+                    render: function(data, type, full, meta) {
+
+                        return full.pay_status;
+                    },
+                },
+                {
+                    targets: 4,
+                    title: "{{trans('inventory::inventory.service')}}",
+                    render: function(data, type, full, meta) {
+
+                        return full.service_id;
+                    },
+                },
+                {
+                    targets: 5,
                     title: "{{trans('inventory::inventory.is_seen')}}",
                     render: function(data, type, full, meta) {
                         if(full.is_seen == 1){
@@ -110,21 +136,21 @@
                     },
                 },
                 {
-                    targets: 4,
+                    targets: 6,
                     title: "{{trans('inventory::inventory.created_at')}}",
                     render: function(data, type, full, meta) {
                         return full.created_at;
                     },
                 },
                 {
-                    targets: 5,
+                    targets: 7,
                     title: "{{trans('inventory::inventory.last_updated_at')}}",
                     render: function(data, type, full, meta) {
                         return full.last_updated_at;
                     },
                 },
                 {
-                    targets: 6,
+                    targets: 8,
                     title: "{{trans('inventory::inventory.actions')}}",
                     orderable: false,
                     render: function(data, type, full, meta) {

@@ -187,9 +187,9 @@ class SiteFooter extends HTMLElement {
                           </a>
                         </li>
                         <li>
-                          <a href='mailto:ask@theadvisors.agency'>
+                          <a href='mailto:ask@thelibyan-cube.agency'>
                             <i class="ri-mail-line"></i>
-                            ask@theadvisors.agency
+                            ask@thelibyan-cube.agency
                           </a>
                         </li>
                       </ul>
@@ -269,7 +269,7 @@ class SiteFooter extends HTMLElement {
         <div class="copyrights text-center">
           <div class="container">
 
-            <p> &copy;${yearNow} The Advisors, Made With
+            <p> &copy;${yearNow} The libyan-cube, Made With
               <i class="ri-heart-fill ri-lg"></i> By
               <a href='https://www.8worx.com/' target='_blank' class='eight-worx-webpage'>
                 8WORX

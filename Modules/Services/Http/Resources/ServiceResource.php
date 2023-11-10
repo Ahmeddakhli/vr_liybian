@@ -20,6 +20,7 @@ class ServiceResource extends JsonResource
             'id' => $this->id,
             'service' => $this->value ? $this->value : $this->default_value,
             'icon' => $this->icon ? $this->icon : null,
+            'price' => $this->price ? $this->price : 0,
             'description' => $this->description ? $this->description : $this->default_description,
             'creator' => $this->creator ?  new UserMinimalResource($this->creator) : null,
             'created_at' => $this->created_at ? $this->created_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString() : null,

@@ -46,7 +46,7 @@ class IUnit extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'id', 'slug', 'i_project_id', 'i_unit_type_id', 'video', 'installments', 'unit_number', 'building_number', 'seller_id', 'i_position_id', 'i_view_id', 'area', 'garden_area', 'plot_area', 'build_up_area', 'i_bedroom_id', 'i_bathroom_id', 'i_floor_number_id', 'i_purpose_id', 'i_purpose_type_id', 'country_id', 'region_id', 'city_id', 'area_id', 'latitude', 'longitude', 'i_offering_type_id', 'price', 'i_payment_method_id', 'buyer_id', 'down_payment', 'number_of_installments', 'currency_code', 'i_area_unit_id', 'roof_area', 'terrace_area', 'i_garden_area_unit_id', 'i_furnishing_status_id', 'i_design_type_id', 'i_finishing_type_id', 'is_featured', 'is_active', 'created_at', 'updated_at', 'ready_to_move','rent_price','resale_price'
+        'id', 'slug', 'i_project_id', 'i_unit_type_id',"featured_image", 'video', 'installments', 'unit_number', 'building_number', 'seller_id', 'i_position_id', 'i_view_id', 'area', 'garden_area', 'plot_area', 'build_up_area', 'i_bedroom_id', 'i_bathroom_id', 'i_floor_number_id', 'i_purpose_id', 'i_purpose_type_id', 'country_id', 'region_id', 'city_id', 'area_id', 'latitude', 'longitude', 'i_offering_type_id', 'price', 'i_payment_method_id', 'buyer_id', 'down_payment', 'number_of_installments', 'currency_code', 'i_area_unit_id', 'roof_area', 'terrace_area', 'i_garden_area_unit_id', 'i_furnishing_status_id', 'i_design_type_id', 'i_finishing_type_id', 'is_featured', 'is_active', 'created_at', 'updated_at', 'ready_to_move','is_payed_to_show','rent_price','resale_price'
     ];
 
     protected $appends = [
@@ -339,6 +339,14 @@ class IUnit extends Model implements HasMedia
             $this->attributes['ready_to_move'] = 1;
         } else {
             $this->attributes['ready_to_move'] = 0;
+        }
+    }
+    public function setIsPayedToShowAttribute($value)
+    {
+        if ($value === "on") {
+            $this->attributes['is_payed_to_show'] = 1;
+        } else {
+            $this->attributes['is_payed_to_show'] = 0;
         }
     }
 

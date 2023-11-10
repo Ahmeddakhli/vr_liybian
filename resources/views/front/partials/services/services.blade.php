@@ -29,7 +29,6 @@
           repellendus! Eum amet eos asperiores quia autem nemo quisquam, soluta unde beatae fugit magni inventore a
           sint.</p> --}}
         </div>
-
         <div class="grid-container">
           @foreach($services as $service)
             <div class="service-card">
@@ -38,7 +37,15 @@
                 </div>
                 <span class="service-title">{{ $service->service }}</span>
                 <p class='desc'>{{ $service->description }}</p>
+                <div class="mt-2">
+                    <a class="site-btn sell-btn"  style="margin: auto" href="{{ route('services.show',['id'=>$service->id]) }}">
+                        {{ __('main.sell_your_unit') }}
+                    </a>
+
+                        </div>
+
             </div>
+
             @endforeach
         </div>
     </div>

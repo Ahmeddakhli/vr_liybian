@@ -47,6 +47,8 @@ class UpdateServiceRequest extends FormRequest
         $array = array();
         $array['id'] = "required|exists:services,id,deleted_at,NULL";
         $array['icon'] = "required|string|max:191";
+        $array['price'] = "required|string|max:191";
+
         $array['translations'] = 'required|array';
         $array['translations.*.language_id'] = "required|exists:languages,id";
         $array['translations.*.title'] = "required|string|max:191";

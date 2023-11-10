@@ -17,6 +17,7 @@ class CreateSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->mediumText('tags_manager')->nullable();
             $table->mediumText('pixel_code')->nullable();
+            $table->mediumText('home_iframe')->nullable();
             $table->boolean('enable_ar')->default(0);
             $table->string('aside_title_en')->nullable();
             $table->string('aside_title_ar')->nullable();

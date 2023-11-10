@@ -1,7 +1,7 @@
 <?php
 
 return [
-   
+
     'settings' => 'الإعدادات',
     'type' => 'النوع',
     'system_id' => 'رقم النظام',
@@ -94,4 +94,5 @@ return [
     'services' => 'الخدمات',
     'attachment_is_required' => 'المرفق مطلوب',
     'enter_description' => 'ادخل الوصف',
+    'price'=>'السعر'
 ];

@@ -39,7 +39,7 @@
               <h1 class="title h4">{{ $developer['developer']->developer }}</h1>
             </div>
             <div>
-              <p>                
+              <p>
                 {!! $developer['developer']->description !!}
             </p>
             </div>
@@ -47,7 +47,7 @@
         </div>
 
         <!-- Search links -->
-        <div class="search-links mb-3">
+        {{-- <div class="search-links mb-3">
           <ul class="list-group">
               @foreach ($purpose_types_values as $purpose_type_value)
                   <li class="list-group-item">
@@ -58,7 +58,7 @@
               @endforeach
 
           </ul>
-      </div> 
+      </div>  --}}
         <div class="section-title">
           <h4 class="title">{{ $developer['developer']->developer }} {{__('main.projects')}}</h4>
         </div>
@@ -155,7 +155,7 @@
                 <dev-card img="assets/developers/logo-6.png" data-title="sodic"></dev-card>
               </div>
             </div>
-            
+
           </div>
         </div> --}}
 

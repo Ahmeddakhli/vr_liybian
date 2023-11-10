@@ -48,7 +48,9 @@ class CreateAboutRequest extends FormRequest
             'translations.*.title' => 'nullable|string|max:191',
             'translations.*.description' =>'required|string|max:65535',
             'is_featured' => ['nullable', Rule::in(['on', 'off'])],
-            'image' => "nullable|mimes:png,jpeg,jpg"
+            'image' => "nullable|mimes:png,jpeg,jpg",
+            'video_url' => 'nullable|string|max:255',
+
         ];
     }
 

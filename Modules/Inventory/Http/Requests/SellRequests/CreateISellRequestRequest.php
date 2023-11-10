@@ -16,6 +16,9 @@ class CreateISellRequestRequest extends FormRequest
         return [
             'compound' => 'required|string|max:191',
             'i_purpose_id' => 'required|exists:i_purposes,id,deleted_at,NULL',
+            'service_id' => 'nullable|exists:services,id,deleted_at,NULL',
+            'pay_status' => 'nullable|string|max:191',
+
             'i_purpose_type_id' => 'required|exists:i_purpose_types,id,deleted_at,NULL',
             'unit_name' => 'required|string|max:191',
             'comments' => 'nullable|string|max:4294967295',

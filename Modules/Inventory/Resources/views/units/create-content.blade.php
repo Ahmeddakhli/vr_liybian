@@ -57,12 +57,7 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="attachment-tab" data-toggle="tab" data-target="#attachment" type="button" role="tab" aria-controls="attachment" aria-selected="false">{{__('inventory::inventory.attachments')}}</button>
                                                 </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="financial_information-tab" data-toggle="tab" data-target="#financial_information" type="button" role="tab" aria-controls="financial_information" aria-selected="false">{{__('inventory::inventory.financial_information')}}</button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="payment_plans-tab" data-toggle="tab" data-target="#payment_plans" type="button" role="tab" aria-controls="payment_plans" aria-selected="false">{{__('inventory::inventory.payment_plans')}}</button>
-                                                </li>
+
                                             </ul>
 
                                             <div class="tab-content" id="myTabContent">
@@ -77,9 +72,9 @@
                                                             <input name="is_active" id="is_active" type="checkbox">
                                                             <label for="is_active">{{__('inventory::inventory.is_active')}}</label>
                                                         </div>
-                                                        <div class="fancy-checkbox col-4">
-                                                            <input name="ready_to_move" id="ready_to_move" type="checkbox">
-                                                            <label for="ready_to_move">{{__('main.ready_to_move')}}</label>
+                  <div class="fancy-checkbox col-4">
+                                                            <input name="is_payed_to_show" id="ready_to_move" type="checkbox">
+                                                            <label for="ready_to_move">{{__('main.is_payed_to_show')}}</label>
                                                         </div>
                                                         <!-- Unit Number -->
                                                         <!-- <div class="col-4 my-3">
@@ -112,12 +107,12 @@
                                                             <div id="offering_type_container" class="error_container"></div>
                                                         </div>
                                                         <!-- Seller -->
-                                                        <div class="col-4 my-3">
-                                                            <label class="col-12 control-label" for="seller_id">{{__('inventory::inventory.seller')}}<small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <div class="col-12">
-                                                                <input type="text" id="seller_id" name="seller_id" data-parsley-trigger="change focusout" class="form-control" data-role="tagsinput" />
-                                                            </div>
-                                                        </div>
+                                                        <!--<div class="col-4 my-3">-->
+                                                        <!--    <label class="col-12 control-label" for="seller_id">{{__('inventory::inventory.seller')}}<small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>-->
+                                                        <!--    <div class="col-12">-->
+                                                        <!--        <input type="text" id="seller_id" name="seller_id" data-parsley-trigger="change focusout" class="form-control" data-role="tagsinput" />-->
+                                                        <!--    </div>-->
+                                                        <!--</div>-->
                                                         <!-- Buyer -->
                                                         <!-- <div class="col-6">
                                                             <label class="col-12 control-label">{{__('inventory::inventory.buyer')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
@@ -343,10 +338,10 @@
                                                                         </select>
                                                                     </div>
                                                                     <!-- Address -->
-                                                                    <div class="col-6">
-                                                                        <label for="address">{{__('inventory::inventory.address')}}</label>
-                                                                        <input name="address" id="address" type="text" class="form-control" placeholder="{{__('inventory::inventory.enter_address')}}" data-parsley-trigger="change focusout" data-parsley-maxlength="191" data-parsley-maxlength-message="{{__('inventory::inventory.address_max_is_16777215_characters_long')}}">
-                                                                    </div>
+                                                                    <!--<div class="col-6">-->
+                                                                    <!--    <label for="address">{{__('inventory::inventory.address')}}</label>-->
+                                                                    <!--    <input name="address" id="address" type="text" class="form-control" placeholder="{{__('inventory::inventory.enter_address')}}" data-parsley-trigger="change focusout" data-parsley-maxlength="191" data-parsley-maxlength-message="{{__('inventory::inventory.address_max_is_16777215_characters_long')}}">-->
+                                                                    <!--</div>-->
                                                                     <!-- Title -->
                                                                     <div class="col-6">
                                                                         <label for="title">{{__('inventory::inventory.title')}}</label>
@@ -445,6 +440,20 @@
                                                             <label for="video">{{__('inventory::inventory.video')}}</label> - <small>{{__('settings::settings.embed')}}</small>
                                                             <textarea name="video" class="form-control" id="video" data-parsley-trigger="change focusout"></textarea>
                                                         </div>
+                                                              <div class="col-3 mt-3">
+                                                            <div class="form-group imgUp">
+                                                                <label
+                                                                    for="featured_image">{{ __('inventory::inventory.featured_image') }}
+                                                                </label>
+                                                                <div class="imagePreview"></div>
+                                                                <label class="btn btn-primary">
+                                                                    {{ __('inventory::inventory.upload_attachment') }}<input
+                                                                        type="file" name="featured_image"
+                                                                        class="uploadFile img" required
+                                                                        style="width: 0px;height: 0px;overflow: hidden;">
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-8 my-3 mb3">
                                                             <div class="form-group">
                                                                 <label for="attachments">{{__('inventory::inventory.attachments')}}</label>
@@ -527,56 +536,7 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="tab-pane fade" id="financial_information" role="tabpanel" aria-labelledby="financial_information-tab">
-                                                    <div class="form-group row">
-                                                        <!-- Currency Code -->
-                                                        <!-- Payment Method -->
-                                                        <div class="col-4 my-3">
-                                                            <label for="i_payment_method_id">{{__('inventory::inventory.payment_method')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <select class="form-control selectpicker" data-live-search="true" id="i_payment_method_id" name="i_payment_method_id" data-parsley-trigger="change focusout">
-                                                                <option value="" selected disabled>{{__('inventory::inventory.select_payment_method')}}</option>
-                                                                @foreach ($payment_methods as $payment_method)
-                                                                <option value="{{$payment_method->id}}">{{$payment_method->payment_method}}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-4 my-3">
-                                                            <label for="currency_code">{{__('inventory::inventory.currency_code')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <select class="form-control kt-selectpicker" data-live-search="true" id="currency_code" name="currency_code" data-parsley-trigger="change focusout">
-                                                                <option value="" selected disabled>{{trans('inventory::inventory.select_currency_code')}}</option>
-                                                                @for ($i = 0; $i < count($currency_codes); $i++) <option value="{{$currency_codes[$i]}}">{{$currency_codes[$i]}}</option>
-                                                                    @endfor
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-4 my-3">
-                                                            <label for="price">{{__('inventory::inventory.price')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input name="price" id="price" type="number" class="form-control" placeholder="{{__('inventory::inventory.enter_price')}}" data-parsley-trigger="change focusout">
-                                                        </div>
-                                                        <!-- Down Payment -->
-                                                        <div class="col-4 my-3">
-                                                            <label for="down_payment">{{__('inventory::inventory.down_payment')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input name="down_payment" id="down_payment" type="number" step="0.01" class="form-control" placeholder="{{__('inventory::inventory.enter_down_payment')}}" data-parsley-trigger="change focusout">
-                                                        </div>
-
-                                                        <!-- Price -->
-                                                        <!-- Number of Installments -->
-                                                        <div class="col-4 my-3">
-                                                            <label for="installments">{{__('inventory::inventory.installments')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input name="installments" id="installments" type="number" step="0.01" class="form-control" placeholder="{{__('inventory::inventory.installments')}}" data-parsley-trigger="change focusout">
-                                                        </div>
-                                                        <div class="col-4 my-3">
-                                                            <label for="rent_price">{{__('inventory::inventory.rent_price')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input name="rent_price" id="rent_price" type="number" class="form-control" placeholder="{{__('inventory::inventory.enter_price')}}" data-parsley-trigger="change focusout">
-                                                        </div>
-                                                        <div class="col-4 my-3">
-                                                            <label for="resale_price">{{__('inventory::inventory.resale_price')}} <small class="text-muted"> - {{__('inventory::inventory.optional')}}</small></label>
-                                                            <input name="resale_price" id="resale_price" type="number" class="form-control" placeholder="{{__('inventory::inventory.enter_price')}}" data-parsley-trigger="change focusout">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="payment_plans" role="tabpanel" aria-labelledby="payment_plans-tab">
-                                                    @include('inventory::units.payment-plan-partial')
-                                                </div>
+                                           
                                             </div>
 
                                         </div>

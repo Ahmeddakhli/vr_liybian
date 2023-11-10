@@ -39,6 +39,7 @@ class Setting extends Model
     protected $fillable = [
         'id', 'tags_manager',
         'pixel_code',
+        'home_iframe',
         'enable_ar',
         'aside_title_en',
         'aside_title_ar',

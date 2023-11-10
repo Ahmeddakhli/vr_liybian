@@ -30,10 +30,12 @@ use Modules\Inventory\Http\Controllers\Actions\OfferingTypes\GetIOfferingTypesAc
 use Modules\Inventory\Http\Controllers\Actions\PaymentMethods\GetIPaymentMethodsAction;
 use Modules\Inventory\Http\Controllers\Actions\Purposes\GetIPurposesAction;
 use Modules\Inventory\Http\Controllers\Actions\PurposeTypes\GetIPurposeTypesAction;
+use Modules\Inventory\Http\Controllers\Actions\SellUnitRequests\CreateISellRequestAction;
 use Modules\Inventory\Http\Controllers\Actions\Units\GetUnitPricesListAction;
 use Modules\Inventory\Http\Requests\DesignTypes\GetDesignTypeUnitsFrontRequest;
 use Modules\Inventory\Http\Resources\IUnitTypeResource;
 use Modules\Inventory\IProject;
+use Modules\Inventory\ISellUnitRequest;
 use Modules\Inventory\UnitType;
 
 class UnitsController extends Controller
@@ -70,16 +72,18 @@ class UnitsController extends Controller
         // Get unit
         $unit = json_decode(json_encode($action->execute($id)));
 
-        // Check compares
-        $compare_check = Compare::where('unit_id', $unit->id);
-        if (Auth::check()) {
-            $compare_check =  $compare_check->where('user_id', Auth::user()->id);
-        } else {
-            $session = $request->session()->get('_token');
-            $compare_check =  $compare_check->where('session', $session);
-        }
-        $compare_check = $compare_check->first();
+        // Check if the unit requires payment to be shown
+        if ($unit->is_payed_to_show) {
 
+            // Check if the user has made a payment for this unit
+            // $userHasPayment = $this->checkUserPaymentForUnit(Auth::user(), $unit);
+
+            // If the user hasn't made a payment, redirect to the payment URL
+            // if (!$userHasPayment) {
+            // Redirect to the payment URL
+            return view('inventory::sell_unit_requests.payunit', compact('unit'), [])->render();
+            // }
+        }
         // Get related units
         if ($unit->city) {
             $relates = json_decode(json_encode(IUnitResource::collection(IUnit::active()->where('id', '!=', $unit->id)->where('city_id', $unit->city->id)->where('i_offering_type_id', '=', $unit->offering_type_id)->orderBy('created_at', 'DESC')->take(4)->get())));
@@ -87,19 +91,113 @@ class UnitsController extends Controller
             $relates = [];
         }
 
-        $action = new GetComparesAction;
-        $compares = json_decode(json_encode($action->execute()));
+        // $action = new GetComparesAction;
+        // $compares = json_decode(json_encode($action->execute()));
 
-        $features = [
-            'compares' => $compares
-        ];
+        // $features = [
+        //     'compares' => $compares
+        // ];
 
         // Set unit and relates to featured page data
         $features['single_unit'] = $unit;
         $features['relates'] = $relates;
-        $features['compare_check'] = $compare_check;
+        // $features['compare_check'] =[];
 
         return view('front.pages.single-unit', $features);
+    }
+    private function checkUserPaymentForUnit($user, $unit)
+    {
+        return ISellUnitRequest::where('user_id', $user->id)
+            ->where('unit_id', $unit->id)
+            ->exists();
+    }
+    public function pay(Request $request)
+    {
+        // dd($request->all());
+        // Process form data here
+        $validator = \Validator::make($request->all(), [
+            'unit_name' => 'required',
+            'attachments' => 'nullable|array|min:1', // Adjust as needed
+            'i_purpose_id' => 'required',
+            'i_unit_id' => 'nullable',
+            'pay_status' => 'nullable',
+            'i_purpose_type_id' => 'required',
+            'name' => 'required',
+            'email' => 'email',
+            'phone' => 'required',
+            'comments' => 'required',
+        ], [
+            'unit_name.required' => __('main.please_enter_your_unit_name'),
+            'attachments.required' => __('main.please_enter_your_attachments'),
+            // Add more custom messages for other fields as needed
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route("services.show", $request->i_unit_id)->withErrors($validator)->withInput();
+        }
+        $unit = (new GetIUnitByIdAction)->execute($request->i_unit_id);
+        $additionalData = [
+            'pay_status' => 'فى انتظار المراجعه',
+            "i_unit_id"=> $unit->id
+        ];
+
+        $request->merge($additionalData);
+
+        $order =   (new CreateISellRequestAction)->execute($request->except('attachments'), $request->attachments);
+        $url = 'https://c7drkx2ege.execute-api.eu-west-2.amazonaws.com/payment/initiate';
+
+        $headers = [
+            'Accept: application/json',
+            'Authorization: Bearer P0siHRT9U2pPHjUlGZnDTK8hD1ccbekvibAZPUn6',
+            'Content-Type: application/x-www-form-urlencoded'
+        ];
+
+        $data = [
+            'id' => 'oQV9rwLA4zGML1xmWbgldOn6eP2RVovXgXp3qXQD9yKNjB0k7waArJE5YmgPedN0',
+            'amount' => $unit->price?? 5 ,
+            'phone' => "924287386",
+            'email' => $request->email,
+            'backend_url' => 'https://libyancube.com/en/services/back',
+            'frontend_url' => 'https://libyancube.com/en/services/back',
+            'custom_ref' => "custom_ref_" . $order->id
+        ];
+        // "store_id"=>'OmAyaKL7LxE7lVGO2eaJD9kNw165RrvVoeZMbPWAdgByKQzo0Y3mj4qXnxgjQMD6',
+        // "transaction_ref"=>"LXWJ4250",
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+        $responseData = json_decode($response);
+        if (isset($responseData->result) && $responseData->result === 'success') {
+            // Success response handling
+            // $customRef = $response['custom_ref'];
+            $url = $responseData->url;
+
+            // Perform actions with the successful response data
+            // For example, redirect the user to the generated URL
+            return redirect($url);
+        } else {
+            dd($responseData);
+            $massage = $responseData->message;
+            return view('front.pages.show-errors', compact('massage'));
+
+            // Error response handling
+            $errorMessage = $responseData->message;
+            $errors = $responseData->errors;
+
+            // Perform actions with the error response data
+            // For example, display the error message and errors to the user
+            return response()->json('Notification not found', 422);
+        }
     }
 
     /**

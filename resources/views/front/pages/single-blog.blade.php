@@ -23,8 +23,8 @@ $page_name = '';
 <meta itemprop="description" content="{{ $blog->meta_description }}" />
 <!-- Twitter Card data -->
 <meta name='twitter:app:country' content='EG' />
-<meta name="twitter:site" content="@advisors" />
-<meta name="twitter:creator" content="@advisors" />
+<meta name="twitter:site" content="@libyan-cube" />
+<meta name="twitter:creator" content="@libyan-cube" />
 <meta name="twitter:title" content="{{ $blog->meta_title }}">
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{{isset($attach_value) ? $attach_value : URL::asset('front/images/placeholder.png')}}">

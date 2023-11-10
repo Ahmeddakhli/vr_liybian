@@ -40,7 +40,10 @@
 							@endhaspermission
 							@haspermission('index-inventory-sell-requests')
 							<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('inventory.sell_requests.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">{{__('inventory::inventory.sell_requests')}}</span></a></li>
-							@endhaspermission 
+							@endhaspermission
+                            @haspermission('index-inventory-sell-requests')
+							<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('inventory.sell_unit_requests.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text"> طلبات مشاهدة الوحدات</span></a></li>
+							@endhaspermission
 							@haspermission('index-inventory-developers')
 							<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('inventory.developers.index')}}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">{{__('inventory::inventory.developers')}}</span></a></li>
 							@endhaspermission
@@ -72,9 +75,9 @@
 				{{--@haspermission('index-events')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('events.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-presentation"></i><span class="kt-menu__link-text">{{__('events::event.events')}}</span></a></li>
 				@endhaspermission--}}
-				@haspermission('index-careers')
+				{{-- @haspermission('index-careers')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('careers.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-soft-icons-1"></i><span class="kt-menu__link-text">{{__('careers::career.careers')}}</span></a></li>
-				@endhaspermission
+				@endhaspermission --}}
 				{{--@haspermission('index-meetings')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('meetings.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-layers"></i><span class="kt-menu__link-text">{{__('meetings::meeting.meeting')}}</span></a></li>
 				@endhaspermission--}}
@@ -87,9 +90,9 @@
 				@haspermission('index-locations')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('locations.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-pin"></i><span class="kt-menu__link-text">{{__('locations::location.locations')}}</span></a></li>
 				@endhaspermission
-				@haspermission('index-tags')
+				{{-- @haspermission('index-tags')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('tags.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">{{__('tags::tags.tags')}}</span></a></li>
-				@endhaspermission
+				@endhaspermission --}}
 				{{--@haspermission('index-welcome-messages')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('welcome_messages.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">{{__('welcome_messages::welcome_messages.welcome_messages')}}</span></a></li>
 				@endhaspermission--}}
@@ -105,6 +108,9 @@
 				@endhaspermission
 				@haspermission('index-seo')
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('seo.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">{{__('seo::seo.seo')}}</span></a></li>
+				@endhaspermission
+				     @haspermission('index-domains')
+                <li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('domains.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">{{__('domainsetting::domains.domains')}}</span></a></li>
 				@endhaspermission
 				<li class="kt-menu__item " aria-haspopup="true" data-ktmenu-link-redirect="1"><a href="{{route('attachments.index')}}" class="kt-menu__link "><i class="kt-menu__link-icon flaticon-add-label-button"></i><span class="kt-menu__link-text">{{__('seo::seo.attachments')}}</span></a></li>
 			</ul>

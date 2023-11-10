@@ -98,4 +98,6 @@ return [
     'delete_service' => 'Delete service',
     'services' => 'Services',
     'attachment_is_required' => 'Attachment is required',
+    'price'=>'Price'
+
 ];

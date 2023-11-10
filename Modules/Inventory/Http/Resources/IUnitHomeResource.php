@@ -113,7 +113,9 @@ class IUnitHomeResource extends JsonResource
             // 'is_active' => $this->is_active,
             // 'rate' => !is_null($this->ratings) && !empty($this->ratings) ? floor($this->ratings()->avg('rate')) : null,
             // 'class' => get_class($this->resource),
-            // 'images' => !empty($this->images) ? $this->images : [],
+            'images' => !empty($this->images) ? $this->images : [],
+                        'featured_image' =>  asset('storage/' . $this->featured_image),
+
             // 'created_at' => $this->created_at ? $this->created_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString() : null,
             // 'updated_at' => $this->updated_at ? $this->updated_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->toDateTimeString() : null,
             // 'created_since' => $this->created_at ? $this->created_at->timezone(auth()->user() ? auth()->user()->timezone : 'Africa/Cairo')->diffForHumans() : null,

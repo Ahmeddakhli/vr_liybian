@@ -21,6 +21,12 @@
                 <input name="is_featured" id="is_featured" type="checkbox">
                 <label for="is_featured">{{__('services::services.is_featured')}}</label>
             </div>
+             <div class=" col-12 mb-2">
+                    <label for="price">{{__('services::services.price')}}</label>
+
+                    <input name="price" class="form-control" id="price" type="number" >
+
+                    </div>
             <div class="col-12 repeater">
                 <div data-repeater-list="translations">
                     <div data-repeater-item class="row">

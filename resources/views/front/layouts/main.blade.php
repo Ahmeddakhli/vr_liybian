@@ -74,16 +74,15 @@ if (App::getLocale() == 'ar') {
                 <div class="col-md-10">
                     <p class="p-0">
                         @if (App::getLocale() == 'en')
-                            We use cookies. When you interact with advisors web site, we'd like to provide you with the
+                            We use cookies. When you interact with libyan-cube web site, we'd like to provide you with the
                             best experience that we can. Cookies are used to help personalise your online experience,
                             tailor advertising, and learn how visitors use our website. If you continue to use this
                             site, you consent to our use of cookies
                         @else
-                            نحن نستخدم ملفات تعريف الارتباط. عندما تتواصل مع انلاند عبر موقعها الإلكتروني، فإننا نود أن
+                            نحن نستخدم ملفات تعريف الارتباط. عندما تتواصل مع المكعب الليبى عبر موقعها الإلكتروني، فإننا نود أن
                             نقدم إليك أفضل تجربة ممكنة. تُستخدم ملفات تعريف الارتباط للمساعدة في تخصيص تجربتك عبر
                             الإنترنت وتخصيص الإعلانات ومعرفة كيفية استخدام الزوار موقعنا. إذا واصلت استخدام هذا الموقع،
-                            فإنك توافق على استخدامنا لملفات تعريف الارتباط
-                        @endif
+                            فإنك توافق على استخدامنا لملفات تعريف الارتباط                        @endif
                         <a href="{{ route('front.privacies') }}">{{ __('main.privcy_policy') }}</a>
                     </p>
                 </div>
@@ -120,7 +119,7 @@ if (App::getLocale() == 'ar') {
         <div class="social-links">
 
             @if ($setting->active_messanger_icon)
-                <a href="https://m.me/Advisors.REExperts" class="social-link messenger-link" title='Messenger' style="--delay: 0.1s"
+                <a href="https://m.me/libyan-cube.REExperts" class="social-link messenger-link" title='Messenger' style="--delay: 0.1s"
                     target="_blank" rel="noopener" noreferrer>
                     <i class="ri-messenger-line"></i>
                 </a>

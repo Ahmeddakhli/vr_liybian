@@ -132,7 +132,7 @@ class ISellRequestsController extends Controller
 
     public function show($id)
     {
-        // Get sell request 
+        // Get sell request
         $action = new GetISellRequestByIdAction();
         $i_sell_request = json_decode(json_encode($action->execute($id)));
 

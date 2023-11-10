@@ -46,7 +46,7 @@ class About extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'id', 'created_at', 'updated_at', 'is_featured', 'icon','link','image'
+        'id', 'created_at', 'updated_at', 'is_featured', 'icon','link','image' , 'video_url'
     ];
 
     protected $appends = [
@@ -94,7 +94,7 @@ class About extends Model implements HasMedia
     {
         $about = $this;
         $lang_count = Language::count();
-        if($lang_count){            
+        if($lang_count){
             return Cache::rememberForever('about_'.$this->id.'_description_'.App::getLocale(), function() use ($about) {
                 $about = $about->translations->where('language_id', Language::where('code', App::getLocale())->select('id')->first()->id)->first();
                 return $about ? $about->description : null;
@@ -103,7 +103,7 @@ class About extends Model implements HasMedia
             return '';
         }
     }
-    
+
     public function getDefaultValueAttribute()
     {
         $about = $this;
@@ -121,7 +121,7 @@ class About extends Model implements HasMedia
     {
         $about = $this;
         $lang_count = Language::count();
-        if($lang_count){            
+        if($lang_count){
             return Cache::rememberForever('about_'.$this->id.'_description_'.'en', function() use ($about) {
                 $about = $about->translations->where('language_id', Language::where('code', 'en')->select('id')->first()->id)->first();
                 return $about ? $about->description : null;
@@ -135,7 +135,7 @@ class About extends Model implements HasMedia
     {
         return $this->hasMany('Modules\About\AboutTranslation', 'about_id', 'id');
     }
- 
+
     // Laravel Media Library
     public function registerMediaCollections()
     {
@@ -149,7 +149,7 @@ class About extends Model implements HasMedia
             ->useDisk('public');
     }
 
-    // Handle IS Featured 
+    // Handle IS Featured
     public function setIsFeaturedAttribute($value)
     {
         if ($value === "on") {

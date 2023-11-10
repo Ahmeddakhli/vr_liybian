@@ -16,7 +16,7 @@
 
     <div class="container">
         <!-- Search links -->
-        <div class="search-links mb-3">
+        {{-- <div class="search-links mb-3">
           <ul class="list-group">
               @foreach ($purpose_types_values as $purpose_type_value)
                   <li class="list-group-item">
@@ -27,7 +27,7 @@
               @endforeach
 
           </ul>
-      </div> 
+      </div>  --}}
 
       <div class="row mb-3"></div>
         <div class="row">
@@ -121,7 +121,7 @@
               <dev-card img="assets/developers/logo-6.png" data-title="sodic"></dev-card>
             </div>
           </div>
-          
+
         </div>
       </div> --}}
 

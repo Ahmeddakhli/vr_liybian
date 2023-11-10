@@ -21,5 +21,6 @@
     "Careers": true,
     "CMS": true,
     "SEO": true,
-    "Services": true
+    "Services": true,
+        "DomainSetting": true
 }

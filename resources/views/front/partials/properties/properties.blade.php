@@ -34,7 +34,7 @@ if (Route::currentRouteName() == 'front.project.properties') {
         </div>--}}
 
         <!-- Search links -->
-        <div class="search-links mb-3">
+        {{-- <div class="search-links mb-3">
             <ul class="list-group">
                 @foreach ($purpose_types_values as $purpose_type_value)
                     <li class="list-group-item">
@@ -45,7 +45,7 @@ if (Route::currentRouteName() == 'front.project.properties') {
                 @endforeach
 
             </ul>
-        </div>
+        </div> --}}
 
         <div class="section-title">
             <h4 class="title">{{__('main.properties')}}</h4>

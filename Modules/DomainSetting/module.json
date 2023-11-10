@@ -1,0 +1,13 @@
+{
+    "name": "DomainSetting",
+    "alias": "domainsetting",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DomainSetting\\Providers\\DomainSettingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

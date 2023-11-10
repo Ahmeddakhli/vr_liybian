@@ -35,7 +35,7 @@
       splashLogo.classList.add("show");
       splashScreen.classList.add("hide");
     }, 1000);
-  </script> 
+  </script>
 @endif
 <script src="{{ URL::asset('8x/assets/js/parsley.min.js') }}?ver={{ env('FILES_VER') }}" type="text/javascript">
 </script>
@@ -104,7 +104,7 @@ foreach ($socials as $social) {
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "advisors Properties",
+            "name": "libyan-cube Properties",
             "image":"{{ URL::asset('/front/images/logo.png') }}",
             "url": "{{ env('APP_URL_FULL') }}",
             "address": {

@@ -16,6 +16,7 @@ class AboutResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'video_url' => $this->video_url,
             'title' => $this->value ?? $this->default_value,
             'description' => $this->description ?? $this->default_description,
             'image' => $this->image ? asset('storage/' . $this->image) : null,

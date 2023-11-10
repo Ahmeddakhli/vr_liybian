@@ -20,6 +20,10 @@ return [
     'status' => 'Status',
     'phone' => 'Phone',
     'price_per_mater' => 'Price per mater',
+        'featured_image' =>'Featured image',
+            'image_360' => 'tour 360',
+
+
     'update' => 'Update',
     'summary' => 'Summary',
     'gallery' => 'Gallery',
@@ -429,6 +433,8 @@ return [
     'filter_by_area_units' => 'Filter by Area Units',
     'filter_by_garden_area_units' => 'Filter by Garden Area Units',
     'creators' => 'Creators',
+        'sell_unit_requests' => 'Sell visit requests',
+
     'select_deselect_creators' => 'Creators',
     'filter_by_creators' => 'Filter by Creators',
     'currency_codes' => 'Currency Codes',
@@ -568,6 +574,8 @@ return [
     'add_project_phases' => 'Add Project Phases',
     'add_image_360_trans' => 'Add Translations',
     'title' => 'Title',
+    'service' => 'Service',
+    'pay_status' => 'Pay Status',
     'please_enter_the_title' => 'Please enter the title',
     'title_max_is_150_characters_long' => 'Title maximum number of characters is 150 characters long',
     'link' => 'Link',
